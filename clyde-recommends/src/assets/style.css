@@ -1,4 +1,4 @@
-@import 'mirotone/dist/styles.css';
+@import "mirotone/dist/styles.css";
 
 *,
 *:before,
@@ -14,6 +14,7 @@ body {
   width: 100%;
   overflow: auto;
   padding: var(--space-medium);
+  padding-top: 0;
 }
 
 img {
