@@ -3,5 +3,5 @@
     "typeRoots": ["./node_modules/@types", "./node_modules/@mirohq"]
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
