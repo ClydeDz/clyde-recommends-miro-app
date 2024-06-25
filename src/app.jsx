@@ -58,9 +58,9 @@ const App = () => {
 
   return (
     <>
-      <div className="grid wrapper">
-        <div className="cs1 ce12">
-          <MainContainer style={{ maxHeight: "80%" }}>
+      <div className="grid wrapper full-height">
+        <div className="cs1 ce12 full-height">
+          <MainContainer style={{ height: "100%" }}>
             <ChatContainer>
               <MessageList
                 typingIndicator={
@@ -101,6 +101,9 @@ const App = () => {
                 attachButton={false}
                 onSend={onSendButtonClick}
                 disabled={isBotLoading}
+                autoFocus={true}
+                tabIndex={0}
+                activateAfterChange={true}
               />
             </ChatContainer>
           </MainContainer>

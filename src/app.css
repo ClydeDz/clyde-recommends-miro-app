@@ -16,9 +16,18 @@ body {
   overflow: auto;
   padding: var(--space-medium);
   padding-top: 0;
+  max-height: 100vh;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.cs-message-list {
+  max-height: 90vh;
 }
