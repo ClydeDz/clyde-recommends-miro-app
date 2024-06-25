@@ -6,70 +6,21 @@ import {
   ChatContainer,
   TypingIndicator,
   MessageList,
-  Avatar,
-  Message,
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM, CHAT_TYPE, chatConversations } from "./messages";
+import { CHAT_TYPE, chatConversations } from "./messages";
 import { processBotReply, processUserMessage } from "./engine/messageProcessor";
-import { Welcome } from "./components/Welcome/Welcome";
-
-const TextMessage = (props) => {
-  const { message, nextMessage, index } = props;
-  const isConsecutive = nextMessage && nextMessage.from == message.from;
-
-  return (
-    <Message
-      key={index}
-      model={{
-        type: "text",
-        message: message.contents,
-        sentTime: message.timestamp,
-        sender: message.from,
-        direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
-        position: !isConsecutive ? "single" : "first",
-      }}
-      children={
-        message.from === CHAT_FROM.BOT &&
-        !isConsecutive && <Avatar src="/src/assets/clyde.jpg" name="Clyde" />
-      }
-      avatarSpacer={message.from === CHAT_FROM.BOT && isConsecutive}
-    ></Message>
-  );
-};
-
-const WelcomeMessage = (props) => {
-  const { message, nextMessage, index } = props;
-  const isConsecutive = nextMessage && nextMessage.from == message.from;
-
-  return (
-    <Message
-      key={index}
-      model={{
-        type: "custom",
-        direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
-      }}
-      avatarSpacer={message.from === CHAT_FROM.BOT && isConsecutive}
-    >
-      <Message.CustomContent>
-        <Welcome />
-      </Message.CustomContent>
-    </Message>
-  );
-};
+import { TextMessage } from "./messageTypes/TextMessage/TextMessage";
+import { WelcomeMessage } from "./messageTypes/WelcomeMessage/WelcomeMessage";
+import { getUserInfo } from "./api/api";
 
 const App = () => {
   const [conversation, setConversation] = React.useState(chatConversations);
   const [isBotLoading, setIsBotLoading] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState();
 
-  async function getInfo() {
-    const userInfo = await miro.board.getUserInfo();
-    setUserInfo(userInfo.name);
-  }
-
   React.useEffect(() => {
-    getInfo();
+    getUserInfo(setUserInfo);
   }, []);
 
   const onSendButtonClick = (value) => {
@@ -80,7 +31,7 @@ const App = () => {
 
     setIsBotLoading(true);
     setTimeout(() => {
-      const reply = processBotReply();
+      const reply = processBotReply(value);
       setConversation((oldArray) => [...oldArray, { ...reply }]);
       setIsBotLoading(false);
     }, 500);
@@ -104,6 +55,7 @@ const App = () => {
                     <TextMessage
                       message={convo}
                       index={index}
+                      key={index}
                       nextMessage={
                         conversation[index + 1]
                           ? conversation[index + 1]
@@ -115,6 +67,7 @@ const App = () => {
                     <WelcomeMessage
                       message={convo}
                       index={index}
+                      key={index}
                       nextMessage={
                         conversation[index + 1]
                           ? conversation[index + 1]

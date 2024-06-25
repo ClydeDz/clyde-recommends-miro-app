@@ -5,8 +5,9 @@
 // Clyde's Template Recommender
 // Clyde Recommends
 
-const miro = [
+export const MIRO_TEMPLATES = [
   {
+    id: "uXjVKU1RBSs=",
     title: "Gratitude Journal",
     url: "https://miro.pxf.io/1r4gxD",
     image: "",
@@ -34,6 +35,7 @@ const miro = [
     ],
   },
   {
+    id: "uXjVKOxgOgU=",
     title: "A Hive-ly Retrospective!",
     url: "https://miro.pxf.io/B04GqL",
     image: "",

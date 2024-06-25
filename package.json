@@ -8,13 +8,14 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
     "mirotone": "5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@chatscope/chat-ui-kit-react": "^2.0.3"
+    "stopword": "^3.0.1"
   },
   "devDependencies": {
-    "vite": "3.0.3",
-    "@vitejs/plugin-react": "^2.2.0"
+    "@vitejs/plugin-react": "^2.2.0",
+    "vite": "3.0.3"
   }
 }
