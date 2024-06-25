@@ -29,11 +29,21 @@ const App = () => {
       { ...processUserMessage(value) },
     ]);
 
+    const botReplies = processBotReply(value);
+
     setIsBotLoading(true);
+
     setTimeout(() => {
-      const reply = processBotReply(value);
-      setConversation((oldArray) => [...oldArray, { ...reply }]);
-      setIsBotLoading(false);
+      botReplies.forEach((reply, index) => {
+        setTimeout(function () {
+          setIsBotLoading(true);
+
+          setTimeout(() => {
+            setConversation((oldArray) => [...oldArray, { ...reply }]);
+            setIsBotLoading(false);
+          }, 200);
+        }, index * 1500);
+      });
     }, 500);
   };
 
