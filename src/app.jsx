@@ -14,6 +14,8 @@ import { TextMessage } from "./messageTypes/TextMessage/TextMessage";
 import { WelcomeMessage } from "./messageTypes/WelcomeMessage/WelcomeMessage";
 import { getUserInfo } from "./api/api";
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const App = () => {
   const [conversation, setConversation] = React.useState(chatConversations);
   const [isBotLoading, setIsBotLoading] = React.useState(false);
@@ -24,27 +26,34 @@ const App = () => {
   }, []);
 
   const onSendButtonClick = (value) => {
+    setIsBotLoading(true);
+
     setConversation((oldArray) => [
       ...oldArray,
       { ...processUserMessage(value) },
     ]);
 
+    const processRepliesWithDelay = async (botReplies) => {
+      await delay(500);
+
+      for (let index = 0; index < botReplies.length; index++) {
+        const reply = botReplies[index];
+
+        setIsBotLoading(true);
+        await delay(index * 500);
+
+        setIsBotLoading(true);
+        await delay(200);
+
+        setConversation((oldArray) => [...oldArray, { ...reply }]);
+        setIsBotLoading(false);
+      }
+
+      setIsBotLoading(false);
+    };
+
     const botReplies = processBotReply(value);
-
-    setIsBotLoading(true);
-
-    setTimeout(() => {
-      botReplies.forEach((reply, index) => {
-        setTimeout(function () {
-          setIsBotLoading(true);
-
-          setTimeout(() => {
-            setConversation((oldArray) => [...oldArray, { ...reply }]);
-            setIsBotLoading(false);
-          }, 200);
-        }, index * 1500);
-      });
-    }, 500);
+    processRepliesWithDelay(botReplies);
   };
 
   return (
@@ -91,6 +100,7 @@ const App = () => {
                 placeholder="Type message here"
                 attachButton={false}
                 onSend={onSendButtonClick}
+                disabled={isBotLoading}
               />
             </ChatContainer>
           </MainContainer>
