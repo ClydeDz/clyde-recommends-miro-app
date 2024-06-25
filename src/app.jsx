@@ -18,51 +18,42 @@ const TextMessage = (props) => {
   const { message, nextMessage, index } = props;
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 
-  const data = {
-    model: {
-      message: message.contents,
-      sentTime: message.timestamp,
-      sender: message.from,
-      direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
-      position: !isConsecutive ? "single" : "first",
-    },
-  };
-
   return (
     <Message
       key={index}
-      avatarSpacer={message.from === CHAT_FROM.BOT && isConsecutive}
+      model={{
+        type: "text",
+        message: message.contents,
+        sentTime: message.timestamp,
+        sender: message.from,
+        direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
+        position: !isConsecutive ? "single" : "first",
+      }}
       children={
         message.from === CHAT_FROM.BOT &&
         !isConsecutive && <Avatar src="/src/assets/clyde.jpg" name="Clyde" />
       }
-      {...data}
+      avatarSpacer={message.from === CHAT_FROM.BOT && isConsecutive}
     ></Message>
   );
 };
 
 const WelcomeMessage = (props) => {
   const { message, nextMessage, index } = props;
-  console.log(message);
   const isConsecutive = nextMessage && nextMessage.from == message.from;
-
-  // const data = {
-  //   model: {
-  //     message: message.contents,
-  //     sentTime: message.timestamp,
-  //     sender: message.from,
-  //     direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
-  //     position: !isConsecutive ? "single" : "first",
-  //   },
-  // };
 
   return (
     <Message
       key={index}
+      model={{
+        type: "custom",
+        direction: message.from === CHAT_FROM.BOT ? "incoming" : "outgoing",
+      }}
       avatarSpacer={message.from === CHAT_FROM.BOT && isConsecutive}
-      children={<Welcome />}
     >
-      {/* <Message.HtmlContent></Message.HtmlContent> */}
+      <Message.CustomContent>
+        <Welcome />
+      </Message.CustomContent>
     </Message>
   );
 };
@@ -108,34 +99,30 @@ const App = () => {
                   )
                 }
               >
-                {conversation.map((convo, index) => {
-                  if (convo.type === CHAT_TYPE.TEXT) {
-                    return (
-                      <TextMessage
-                        message={convo}
-                        index={index}
-                        nextMessage={
-                          conversation[index + 1]
-                            ? conversation[index + 1]
-                            : undefined
-                        }
-                      />
-                    );
-                  }
-                  // if (convo.type === CHAT_TYPE.WELCOME) {
-                  //   return (
-                  //     <WelcomeMessage
-                  //       message={convo}
-                  //       index={index}
-                  //       nextMessage={
-                  //         conversation[index + 1]
-                  //           ? conversation[index + 1]
-                  //           : undefined
-                  //       }
-                  //     />
-                  //   );
-                  // }
-                })}
+                {conversation.map((convo, index) => [
+                  convo.type === CHAT_TYPE.TEXT && (
+                    <TextMessage
+                      message={convo}
+                      index={index}
+                      nextMessage={
+                        conversation[index + 1]
+                          ? conversation[index + 1]
+                          : undefined
+                      }
+                    />
+                  ),
+                  convo.type === CHAT_TYPE.WELCOME && (
+                    <WelcomeMessage
+                      message={convo}
+                      index={index}
+                      nextMessage={
+                        conversation[index + 1]
+                          ? conversation[index + 1]
+                          : undefined
+                      }
+                    />
+                  ),
+                ])}
               </MessageList>
               <MessageInput
                 placeholder="Type message here"
