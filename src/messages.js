@@ -1,6 +1,6 @@
 export const CHAT_TYPE = {
   TEXT: "text",
-  WELCOME: "welcome",
+  RECOMMENDATION: "recommendation",
 };
 
 export const CHAT_FROM = {
@@ -9,11 +9,6 @@ export const CHAT_FROM = {
 };
 
 export const chatConversations = [
-  {
-    type: CHAT_TYPE.WELCOME,
-    from: CHAT_FROM.BOT,
-    timestamp: new Date().getDate().toString(),
-  },
   {
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,

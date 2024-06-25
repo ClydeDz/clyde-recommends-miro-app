@@ -11,8 +11,8 @@ import {
 import { CHAT_TYPE, chatConversations } from "./messages";
 import { processBotReply, processUserMessage } from "./engine/messageProcessor";
 import { TextMessage } from "./messageTypes/TextMessage/TextMessage";
-import { WelcomeMessage } from "./messageTypes/WelcomeMessage/WelcomeMessage";
 import { getUserInfo } from "./api/api";
+import { RecommendationMessage } from "./messageTypes/RecommendationMessage/RecommendationMessage";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -82,8 +82,8 @@ const App = () => {
                       }
                     />
                   ),
-                  convo.type === CHAT_TYPE.WELCOME && (
-                    <WelcomeMessage
+                  convo.type === CHAT_TYPE.RECOMMENDATION && (
+                    <RecommendationMessage
                       message={convo}
                       index={index}
                       key={index}

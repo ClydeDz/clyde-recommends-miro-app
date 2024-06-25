@@ -29,5 +29,33 @@ img {
 }
 
 .cs-message-list {
-  max-height: 90vh;
+  max-height: 88vh;
+}
+
+.cs-message.cs-message--outgoing.cs-message--single:not(:first-child),
+.cs-message-list .cs-message.cs-message--outgoing,
+.cs-message-list .cs-message-group.cs-message-group--outgoing {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.recommendation-template {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recommendation-template > img {
+  scale: 1.2;
+}
+
+.recommendation-template > div:first-of-type {
+  margin-top: 18px;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.recommendation-template > a.button {
+  margin: 9px 0;
+  justify-content: center;
 }
