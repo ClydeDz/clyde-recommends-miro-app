@@ -1,4 +1,4 @@
-import { CHAT_FROM, CHAT_TYPE } from "../messages";
+import { CHAT_FROM, CHAT_TYPE } from "../const/messages";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 import { removeStopwords } from "stopword";
 
@@ -39,7 +39,7 @@ export const processBotReply = (userMessage) => {
       from: CHAT_FROM.BOT,
       timestamp: new Date().getDate().toString(),
       contents: `blah blah`,
-      template: {...templatePicked},
+      template: { ...templatePicked },
     },
     {
       type: CHAT_TYPE.TEXT,

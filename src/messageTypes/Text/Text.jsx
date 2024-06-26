@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Avatar, Message } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM } from "../../messages";
+import { CHAT_FROM } from "../../const/messages";
 
-export const TextMessage = (props) => {
+export const Text = (props) => {
   const { message, nextMessage, index } = props;
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 

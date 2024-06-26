@@ -8,16 +8,18 @@ import {
   MessageList,
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
-import { CHAT_TYPE, chatConversations } from "./messages";
+import { CHAT_TYPE, initialChatConversations } from "./const/messages";
 import { processBotReply, processUserMessage } from "./engine/messageProcessor";
-import { TextMessage } from "./messageTypes/TextMessage/TextMessage";
+import { Text } from "./messageTypes/Text/Text";
 import { getUserInfo } from "./api/api";
-import { RecommendationMessage } from "./messageTypes/RecommendationMessage/RecommendationMessage";
+import { Recommendation } from "./messageTypes/Recommendation/Recommendation";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const App = () => {
-  const [conversation, setConversation] = React.useState(chatConversations);
+  const [conversation, setConversation] = React.useState(
+    initialChatConversations
+  );
   const [isBotLoading, setIsBotLoading] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState();
 
@@ -71,7 +73,7 @@ const App = () => {
               >
                 {conversation.map((convo, index) => [
                   convo.type === CHAT_TYPE.TEXT && (
-                    <TextMessage
+                    <Text
                       message={convo}
                       index={index}
                       key={index}
@@ -83,7 +85,7 @@ const App = () => {
                     />
                   ),
                   convo.type === CHAT_TYPE.RECOMMENDATION && (
-                    <RecommendationMessage
+                    <Recommendation
                       message={convo}
                       index={index}
                       key={index}

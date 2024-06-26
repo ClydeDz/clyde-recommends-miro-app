@@ -8,7 +8,7 @@ export const CHAT_FROM = {
   USER: "User",
 };
 
-export const chatConversations = [
+export const initialChatConversations = [
   {
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,
