@@ -13,6 +13,7 @@ import { processBotReply, processUserMessage } from "./engine/messageProcessor";
 import { Text } from "./messageTypes/Text/Text";
 import { getUserInfo } from "./api/api";
 import { Recommendation } from "./messageTypes/Recommendation/Recommendation";
+import { BOT_NAME } from "./const/app";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -67,7 +68,7 @@ const App = () => {
               <MessageList
                 typingIndicator={
                   isBotLoading && (
-                    <TypingIndicator content={`Clyde is typing`} />
+                    <TypingIndicator content={`${BOT_NAME} is typing`} />
                   )
                 }
               >

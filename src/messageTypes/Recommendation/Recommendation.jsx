@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Message, Avatar } from "@chatscope/chat-ui-kit-react";
 import { CHAT_FROM } from "../../const/messages";
+import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
 
 export const Recommendation = (props) => {
   const { message, nextMessage, index } = props;
@@ -17,7 +18,7 @@ export const Recommendation = (props) => {
       }}
       children={
         message.from === CHAT_FROM.BOT &&
-        !isConsecutive && <Avatar src="/src/assets/clyde.jpg" name="Clyde" />
+        !isConsecutive && <Avatar src={BOT_AVATAR_URL} name={BOT_NAME} />
       }
       avatarSpacer={true}
     >

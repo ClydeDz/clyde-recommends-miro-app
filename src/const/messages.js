@@ -1,10 +1,12 @@
+import { BOT_NAME } from "./app";
+
 export const CHAT_TYPE = {
   TEXT: "text",
   RECOMMENDATION: "recommendation",
 };
 
 export const CHAT_FROM = {
-  BOT: "Clyde",
+  BOT: BOT_NAME,
   USER: "User",
 };
 
