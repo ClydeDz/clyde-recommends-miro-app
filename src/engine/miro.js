@@ -59,8 +59,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKPdwzCE=",
     title: "Star Wars Puzzle Time",
     url: "",
-    description: "",
-    tags: [],
+    description: "blha alahbidh",
+    tags: ["puzzle", "star wars"],
   },
   {
     id: "uXjVKVTYUAQ=",
