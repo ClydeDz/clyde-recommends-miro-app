@@ -59,3 +59,13 @@ img {
   margin: 9px 0;
   justify-content: center;
 }
+
+.cs-message.cs-message--outgoing .cs-message__content {
+  border: 0;
+  background: white;
+}
+
+.cs-message-list {
+  background-color: #f2f2f2;
+  padding-top: 9px;
+}
