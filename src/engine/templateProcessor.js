@@ -1,4 +1,4 @@
-import { MIRO_TEMPLATES } from "./miro";
+import { MIRO_TEMPLATES } from "../const/templates";
 
 export const recommendTemplates = (keywords) => {
   const keywordExistsInTag = (tag, keyword) =>
