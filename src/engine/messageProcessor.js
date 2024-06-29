@@ -6,7 +6,7 @@ export const processUserMessage = (userMessage) => {
   return {
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.USER,
-    timestamp: new Date().getDate().toString(),
+    timestamp: new Date().toLocaleString(),
     contents: userMessage,
   };
 };
@@ -27,7 +27,7 @@ export const processBotReply = (userMessage) => {
       {
         type: CHAT_TYPE.TEXT,
         from: CHAT_FROM.BOT,
-        timestamp: new Date().getDate().toString(),
+        timestamp: new Date().toLocaleString(),
         contents: `Sorry, I couldn't find a template that matches that criteria. Perhaps try looking up different keywords?`,
       },
     ];
@@ -37,13 +37,13 @@ export const processBotReply = (userMessage) => {
     {
       type: CHAT_TYPE.TEXT,
       from: CHAT_FROM.BOT,
-      timestamp: new Date().getDate().toString(),
+      timestamp: new Date().toLocaleString(),
       contents: `I've picked this template for you.`,
     },
     {
       type: CHAT_TYPE.RECOMMENDATION,
       from: CHAT_FROM.BOT,
-      timestamp: new Date().getDate().toString(),
+      timestamp: new Date().toLocaleString(),
       contents: `blah blah`,
       template: { ...templatePicked },
     },

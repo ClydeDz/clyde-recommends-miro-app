@@ -15,13 +15,13 @@ export const initialChatConversations = [
   {
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,
-    timestamp: new Date().getDate().toString(),
+    timestamp: new Date().toLocaleString(),
     contents: "Hi! Welcome to Clyde Recommends!",
   },
   {
     type: CHAT_TYPE.ACTIONS,
     from: CHAT_FROM.BOT,
-    timestamp: new Date().getDate().toString(),
+    timestamp: new Date().toLocaleString(),
     actions: [
       "I want a retrospective template",
       "Recommend an icebreaker",
