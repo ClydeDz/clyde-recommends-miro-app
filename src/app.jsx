@@ -14,6 +14,7 @@ import { Text } from "./messageTypes/Text/Text";
 import { getUserInfo } from "./api/api";
 import { Recommendation } from "./messageTypes/Recommendation/Recommendation";
 import { BOT_NAME } from "./const/app";
+import { Actions } from "./messageTypes/Actions/Actions";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -83,6 +84,19 @@ const App = () => {
                           ? conversation[index + 1]
                           : undefined
                       }
+                    />
+                  ),
+                  convo.type === CHAT_TYPE.ACTIONS && (
+                    <Actions
+                      message={convo}
+                      index={index}
+                      key={index}
+                      nextMessage={
+                        conversation[index + 1]
+                          ? conversation[index + 1]
+                          : undefined
+                      }
+                      onSendButtonClick={onSendButtonClick}
                     />
                   ),
                   convo.type === CHAT_TYPE.RECOMMENDATION && (

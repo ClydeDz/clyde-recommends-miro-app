@@ -35,17 +35,17 @@ export const processBotReply = (userMessage) => {
 
   return [
     {
+      type: CHAT_TYPE.TEXT,
+      from: CHAT_FROM.BOT,
+      timestamp: new Date().getDate().toString(),
+      contents: `I've picked this template for you.`,
+    },
+    {
       type: CHAT_TYPE.RECOMMENDATION,
       from: CHAT_FROM.BOT,
       timestamp: new Date().getDate().toString(),
       contents: `blah blah`,
       template: { ...templatePicked },
-    },
-    {
-      type: CHAT_TYPE.TEXT,
-      from: CHAT_FROM.BOT,
-      timestamp: new Date().getDate().toString(),
-      contents: `Click the link above to check it out.`,
     },
   ];
 };

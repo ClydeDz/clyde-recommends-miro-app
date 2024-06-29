@@ -3,6 +3,7 @@ import { BOT_NAME } from "./app";
 export const CHAT_TYPE = {
   TEXT: "text",
   RECOMMENDATION: "recommendation",
+  ACTIONS: "actions",
 };
 
 export const CHAT_FROM = {
@@ -15,7 +16,16 @@ export const initialChatConversations = [
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,
     timestamp: new Date().getDate().toString(),
-    contents:
-      "Hi! Welcome to Clyde Recommends! \n\nFeel free to message me with what kind of templates you're looking for and I can recommend one if I have one for the occasion.",
+    contents: "Hi! Welcome to Clyde Recommends!",
+  },
+  {
+    type: CHAT_TYPE.ACTIONS,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().getDate().toString(),
+    actions: [
+      "I want a retrospective template",
+      "Recommend an icebreaker",
+      "I want to collect feedback",
+    ],
   },
 ];
