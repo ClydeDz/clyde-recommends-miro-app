@@ -104,10 +104,6 @@ img {
   padding-top: 9px;
 }
 
-.cs-message-list .cs-typing-indicator {
-  background-color: transparent;
-}
-
 .cs-message-input__content-editor-wrapper,
 .cs-message-input__content-editor {
   background-color: var(--miro-grey);
@@ -119,4 +115,29 @@ img {
 
 .ps__thumb-y {
   background-color: var(--primary-color);
+}
+
+.cs-message-separator,
+.cs-message-separator::before,
+.cs-message-separator::after {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  height: 0.1px;
+  opacity: 0.3;
+}
+
+.cs-message-list .cs-message-separator:not(:first-child) {
+  margin: 1.5em 0;
+}
+
+.cs-message-list .cs-typing-indicator {
+  background-color: transparent;
+}
+
+.cs-typing-indicator__dot {
+  background-color: var(--primary-color);
+}
+
+.cs-typing-indicator__text {
+  color: var(--primary-color);
 }

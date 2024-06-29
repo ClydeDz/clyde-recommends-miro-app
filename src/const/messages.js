@@ -4,6 +4,7 @@ export const CHAT_TYPE = {
   TEXT: "text",
   RECOMMENDATION: "recommendation",
   ACTIONS: "actions",
+  SPACER: "spacer",
 };
 
 export const CHAT_FROM = {
@@ -27,6 +28,34 @@ export const initialChatConversations = [
       "Give me a retrospective template",
       "Recommend an icebreaker",
       "I want to collect feedback",
+    ],
+  },
+];
+
+export const IDLE_PRELOADED_MESSAGES = {
+  HELP_YES: "Yes, I need help",
+  HELP_NO: "No, I'm good",
+};
+
+export const idleChatConversations = [
+  {
+    type: CHAT_TYPE.SPACER,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().toLocaleString(),
+  },
+  {
+    type: CHAT_TYPE.TEXT,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().toLocaleString(),
+    contents: "I noticed you've not interacted in a while. Do you need a hand?",
+  },
+  {
+    type: CHAT_TYPE.ACTIONS,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().toLocaleString(),
+    actions: [
+      IDLE_PRELOADED_MESSAGES.HELP_YES,
+      IDLE_PRELOADED_MESSAGES.HELP_NO,
     ],
   },
 ];

@@ -20,7 +20,7 @@ export const Actions = (props) => {
         message.from === CHAT_FROM.BOT &&
         isConsecutive && <Avatar src={BOT_AVATAR_URL} name={BOT_NAME} />
       }
-      avatarSpacer={!isConsecutive}
+      avatarSpacer={true}
     >
       <Message.CustomContent>
         <div className="actions-template">

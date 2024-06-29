@@ -1,4 +1,9 @@
-import { CHAT_FROM, CHAT_TYPE } from "../const/messages";
+import {
+  CHAT_FROM,
+  CHAT_TYPE,
+  IDLE_PRELOADED_MESSAGES,
+  idleChatConversations,
+} from "../const/messages";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 import { removeStopwords } from "stopword";
 
@@ -12,6 +17,21 @@ export const processUserMessage = (userMessage) => {
 };
 
 export const processBotReply = (userMessage) => {
+  if (userMessage === IDLE_PRELOADED_MESSAGES.HELP_YES) {
+    return [
+      {
+        type: CHAT_TYPE.TEXT,
+        from: CHAT_FROM.BOT,
+        timestamp: new Date().toLocaleString(),
+        contents: `Type in keywords of what Miro template you're looking for. E.g. retrospective`,
+      },
+    ];
+  }
+
+  if (userMessage === IDLE_PRELOADED_MESSAGES.HELP_NO) {
+    return [];
+  }
+
   const messageExcludingFillers = removeFillerWords(userMessage);
   const keywords = filterKeywords(messageExcludingFillers);
   const templates = recommendTemplates(keywords);
@@ -48,6 +68,10 @@ export const processBotReply = (userMessage) => {
       template: { ...templatePicked },
     },
   ];
+};
+
+export const generatedIdleChatConversations = () => {
+  return idleChatConversations;
 };
 
 const removeFillerWords = (message) => {

@@ -9,12 +9,18 @@ import {
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
 import { CHAT_TYPE, initialChatConversations } from "./const/messages";
-import { processBotReply, processUserMessage } from "./engine/messageProcessor";
+import {
+  generatedIdleChatConversations,
+  processBotReply,
+  processUserMessage,
+} from "./engine/messageProcessor";
 import { Text } from "./messageTypes/Text/Text";
 import { getUserInfo } from "./api/api";
 import { Recommendation } from "./messageTypes/Recommendation/Recommendation";
-import { BOT_NAME } from "./const/app";
+import { BOT_IDLE_TIMEOUT, BOT_NAME } from "./const/app";
 import { Actions } from "./messageTypes/Actions/Actions";
+import { useIdleTimer } from "react-idle-timer";
+import { Spacer } from "./messageTypes/Spacer/Spacer";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -25,9 +31,40 @@ const App = () => {
   const [isBotLoading, setIsBotLoading] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState();
 
+  const onIdle = () => {
+    console.log("on idle");
+    const botReplies = generatedIdleChatConversations();
+    processRepliesWithDelay(botReplies);
+  };
+
+  const idleTimer = useIdleTimer({
+    onIdle,
+    timeout: BOT_IDLE_TIMEOUT,
+    stopOnIdle: true,
+  });
+
   React.useEffect(() => {
     getUserInfo(setUserInfo);
   }, []);
+
+  const processRepliesWithDelay = async (botReplies) => {
+    await delay(500);
+
+    for (let index = 0; index < botReplies.length; index++) {
+      const reply = botReplies[index];
+
+      setIsBotLoading(true);
+      await delay(index * 500);
+
+      setIsBotLoading(true);
+      await delay(200);
+
+      setConversation((oldArray) => [...oldArray, { ...reply }]);
+      setIsBotLoading(false);
+    }
+
+    setIsBotLoading(false);
+  };
 
   const onSendButtonClick = (value) => {
     setIsBotLoading(true);
@@ -37,27 +74,9 @@ const App = () => {
       { ...processUserMessage(value) },
     ]);
 
-    const processRepliesWithDelay = async (botReplies) => {
-      await delay(500);
-
-      for (let index = 0; index < botReplies.length; index++) {
-        const reply = botReplies[index];
-
-        setIsBotLoading(true);
-        await delay(index * 500);
-
-        setIsBotLoading(true);
-        await delay(200);
-
-        setConversation((oldArray) => [...oldArray, { ...reply }]);
-        setIsBotLoading(false);
-      }
-
-      setIsBotLoading(false);
-    };
-
     const botReplies = processBotReply(value);
     processRepliesWithDelay(botReplies);
+    botReplies && botReplies.length > 0 && idleTimer.start();
   };
 
   return (
@@ -111,10 +130,11 @@ const App = () => {
                       }
                     />
                   ),
+                  convo.type === CHAT_TYPE.SPACER && <Spacer />,
                 ])}
               </MessageList>
               <MessageInput
-                placeholder="Type your message here"
+                placeholder={`Type your message here`}
                 attachButton={false}
                 onSend={onSendButtonClick}
                 disabled={isBotLoading}
