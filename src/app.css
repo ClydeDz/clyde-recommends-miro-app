@@ -69,3 +69,7 @@ img {
   background-color: #f2f2f2;
   padding-top: 9px;
 }
+
+.cs-message-list .cs-typing-indicator {
+  background-color: transparent;
+}

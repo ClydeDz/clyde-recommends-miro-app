@@ -2,7 +2,7 @@ import { MIRO_TEMPLATES } from "../const/templates";
 
 export const recommendTemplates = (keywords) => {
   const keywordExistsInTag = (tag, keyword) =>
-    tag.toLowerCase().includes(keyword.toLowerCase());
+    tag.toLowerCase() === keyword.toLowerCase();
 
   const hasMatchingTag = (tags, keywords) =>
     tags.some((tag) =>
