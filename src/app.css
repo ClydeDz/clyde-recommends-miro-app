@@ -1,6 +1,15 @@
 @import "mirotone/dist/styles.css";
 @import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
+:root {
+  --dark-color: #091e05;
+  --light-color: #ffffff;
+  --background: #fcf5c7;
+  --miro-grey: #f2f2f2;
+  --primary-color: #009688;
+  --secondary-color: #dff2d8;
+}
+
 *,
 *:before,
 *:after {
@@ -60,16 +69,54 @@ img {
   justify-content: center;
 }
 
-.cs-message.cs-message--outgoing .cs-message__content {
+.cs-message.cs-message--outgoing .cs-message__content,
+.cs-message.cs-message--outgoing.cs-message--first .cs-message__content {
   border: 0;
   background: white;
 }
 
+.cs-message.cs-message--incoming .cs-message__content,
+.cs-message.cs-message--incoming.cs-message--first .cs-message__content {
+  border: 0;
+  background: var(--primary-color);
+  color: var(--light-color);
+}
+
+.cs-message.cs-message--incoming .cs-message__content:has(.cs-button) {
+  background: transparent;
+  padding: 0;
+}
+
+.cs-message .cs-button {
+  background: var(--miro-grey);
+  color: var(--dark-color);
+  border-radius: 0.7em;
+  margin-bottom: 4px;
+}
+
+.cs-message .cs-button.cs-button--border {
+  border: 1.1px solid var(--primary-color);
+  padding: 0.6em 0.9em;
+}
+
 .cs-message-list {
-  background-color: #f2f2f2;
+  background-color: var(--miro-grey);
   padding-top: 9px;
 }
 
 .cs-message-list .cs-typing-indicator {
   background-color: transparent;
+}
+
+.cs-message-input__content-editor-wrapper,
+.cs-message-input__content-editor {
+  background-color: var(--miro-grey);
+}
+
+.cs-button--send {
+  color: var(--primary-color);
+}
+
+.ps__thumb-y {
+  background-color: var(--primary-color);
 }

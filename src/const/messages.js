@@ -16,14 +16,15 @@ export const initialChatConversations = [
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,
     timestamp: new Date().toLocaleString(),
-    contents: "Hi! Welcome to Clyde Recommends!",
+    contents:
+      "Hi! Welcome to Clyde Recommends!\n\nTry clicking one of the prompts below to get a Miro template recommendation.",
   },
   {
     type: CHAT_TYPE.ACTIONS,
     from: CHAT_FROM.BOT,
     timestamp: new Date().toLocaleString(),
     actions: [
-      "I want a retrospective template",
+      "Give me a retrospective template",
       "Recommend an icebreaker",
       "I want to collect feedback",
     ],

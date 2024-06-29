@@ -114,7 +114,7 @@ const App = () => {
                 ])}
               </MessageList>
               <MessageInput
-                placeholder="Type message here"
+                placeholder="Type your message here"
                 attachButton={false}
                 onSend={onSendButtonClick}
                 disabled={isBotLoading}
