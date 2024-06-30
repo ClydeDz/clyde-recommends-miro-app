@@ -19,6 +19,8 @@ import { BOT_IDLE_TIMEOUT, BOT_NAME } from "../../const/app";
 import { Actions } from "../../messageTypes/Actions/Actions";
 import { useIdleTimer } from "react-idle-timer";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
+import { useDispatch, useSelector } from "react-redux";
+import { increment } from "../../redux/counterSlice";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -28,9 +30,11 @@ export const Chat = () => {
   );
   const [isBotLoading, setIsBotLoading] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState();
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   const onIdle = () => {
-    console.log("on idle");
+    console.log("on idle", count);
     const botReplies = generatedIdleChatConversations();
     processRepliesWithDelay(botReplies);
   };
@@ -66,6 +70,7 @@ export const Chat = () => {
 
   const onSendButtonClick = (value) => {
     setIsBotLoading(true);
+    dispatch(increment());
 
     setConversation((oldArray) => [
       ...oldArray,
