@@ -4,6 +4,7 @@ import {
   IDLE_PRELOADED_MESSAGES,
   idleChatConversations,
 } from "../const/messages";
+import { setSearchKeywords } from "../redux/searchSlice";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 import { removeStopwords } from "stopword";
 
@@ -16,7 +17,7 @@ export const processUserMessage = (userMessage) => {
   };
 };
 
-export const processBotReply = (userMessage) => {
+export const processBotReplies = (userMessage, dispatch) => {
   if (userMessage === IDLE_PRELOADED_MESSAGES.HELP_YES) {
     return [
       {
@@ -36,6 +37,8 @@ export const processBotReply = (userMessage) => {
   const keywords = filterKeywords(messageExcludingFillers);
   const templates = recommendTemplates(keywords);
   const templatePicked = pickTemplate(templates);
+
+  dispatch(setSearchKeywords(keywords));
 
   console.log(messageExcludingFillers);
   console.log(keywords);
@@ -70,7 +73,7 @@ export const processBotReply = (userMessage) => {
   ];
 };
 
-export const generatedIdleChatConversations = () => {
+export const generateIdleChatConversations = () => {
   return idleChatConversations;
 };
 

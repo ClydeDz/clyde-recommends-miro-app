@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   MainContainer,
   ChatContainer,
@@ -6,79 +6,42 @@ import {
   MessageList,
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
-import { CHAT_TYPE, initialChatConversations } from "../../const/messages";
+import { CHAT_TYPE } from "../../const/messages";
 import {
-  generatedIdleChatConversations,
-  processBotReply,
+  processBotReplies,
   processUserMessage,
 } from "../../engine/messageProcessor";
 import { Text } from "../../messageTypes/Text/Text";
-import { getUserInfo } from "../../api/api";
 import { Recommendation } from "../../messageTypes/Recommendation/Recommendation";
-import { BOT_IDLE_TIMEOUT, BOT_NAME } from "../../const/app";
+import { BOT_NAME } from "../../const/app";
 import { Actions } from "../../messageTypes/Actions/Actions";
-import { useIdleTimer } from "react-idle-timer";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
-import { useDispatch, useSelector } from "react-redux";
-import { increment } from "../../redux/counterSlice";
+import { useDispatch } from "react-redux";
+import { setSearchTerms } from "../../redux/searchSlice";
+import { processRepliesWithDelay } from "../../engine/replyProcessor";
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-export const Chat = () => {
-  const [conversation, setConversation] = React.useState(
-    initialChatConversations
-  );
-  const [isBotLoading, setIsBotLoading] = React.useState(false);
-  const [userInfo, setUserInfo] = React.useState();
-  const count = useSelector((state) => state.counter.value);
+export const Chat = (props) => {
+  const {
+    conversations,
+    setConversations,
+    isBotLoading,
+    setIsBotLoading,
+    idleTimer,
+  } = props;
   const dispatch = useDispatch();
 
-  const onIdle = () => {
-    console.log("on idle", count);
-    const botReplies = generatedIdleChatConversations();
-    processRepliesWithDelay(botReplies);
-  };
-
-  const idleTimer = useIdleTimer({
-    onIdle,
-    timeout: BOT_IDLE_TIMEOUT,
-    stopOnIdle: true,
-  });
-
-  React.useEffect(() => {
-    getUserInfo(setUserInfo);
-  }, []);
-
-  const processRepliesWithDelay = async (botReplies) => {
-    await delay(500);
-
-    for (let index = 0; index < botReplies.length; index++) {
-      const reply = botReplies[index];
-
-      setIsBotLoading(true);
-      await delay(index * 500);
-
-      setIsBotLoading(true);
-      await delay(200);
-
-      setConversation((oldArray) => [...oldArray, { ...reply }]);
-      setIsBotLoading(false);
-    }
-
-    setIsBotLoading(false);
-  };
-
-  const onSendButtonClick = (value) => {
+  const onSendButtonClick = (userMessage) => {
     setIsBotLoading(true);
-    dispatch(increment());
+    dispatch(setSearchTerms(userMessage));
 
-    setConversation((oldArray) => [
+    setConversations((oldArray) => [
       ...oldArray,
-      { ...processUserMessage(value) },
+      { ...processUserMessage(userMessage) },
     ]);
 
-    const botReplies = processBotReply(value);
-    processRepliesWithDelay(botReplies);
+    const botReplies = processBotReplies(userMessage, dispatch);
+    processRepliesWithDelay(botReplies, setIsBotLoading, setConversations);
+
     botReplies && botReplies.length > 0 && idleTimer.start();
   };
 
@@ -95,15 +58,15 @@ export const Chat = () => {
                   )
                 }
               >
-                {conversation.map((convo, index) => [
+                {conversations.map((convo, index) => [
                   convo.type === CHAT_TYPE.TEXT && (
                     <Text
                       message={convo}
                       index={index}
                       key={index}
                       nextMessage={
-                        conversation[index + 1]
-                          ? conversation[index + 1]
+                        conversations[index + 1]
+                          ? conversations[index + 1]
                           : undefined
                       }
                     />
@@ -114,8 +77,8 @@ export const Chat = () => {
                       index={index}
                       key={index}
                       nextMessage={
-                        conversation[index + 1]
-                          ? conversation[index + 1]
+                        conversations[index + 1]
+                          ? conversations[index + 1]
                           : undefined
                       }
                       onSendButtonClick={onSendButtonClick}
@@ -127,8 +90,8 @@ export const Chat = () => {
                       index={index}
                       key={index}
                       nextMessage={
-                        conversation[index + 1]
-                          ? conversation[index + 1]
+                        conversations[index + 1]
+                          ? conversations[index + 1]
                           : undefined
                       }
                     />
