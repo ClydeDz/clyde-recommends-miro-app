@@ -16,22 +16,18 @@ import { Recommendation } from "../../messageTypes/Recommendation/Recommendation
 import { BOT_NAME } from "../../const/app";
 import { Actions } from "../../messageTypes/Actions/Actions";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
 import { processRepliesWithDelay } from "../../engine/replyProcessor";
+import { setIsBotLoading } from "../../redux/appSlice";
 
 export const Chat = (props) => {
-  const {
-    conversations,
-    setConversations,
-    isBotLoading,
-    setIsBotLoading,
-    idleTimer,
-  } = props;
+  const { conversations, setConversations, idleTimer } = props;
   const dispatch = useDispatch();
+  const isBotLoading = useSelector((state) => state.app.isBotLoading);
 
-  const onSendButtonClick = (userMessage) => {
-    setIsBotLoading(true);
+  const onSendButtonClick = async (userMessage) => {
+    dispatch(setIsBotLoading(true));
     dispatch(setSearchTerms(userMessage));
 
     setConversations((oldArray) => [
@@ -40,7 +36,7 @@ export const Chat = (props) => {
     ]);
 
     const botReplies = processBotReplies(userMessage, dispatch);
-    processRepliesWithDelay(botReplies, setIsBotLoading, setConversations);
+    await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && idleTimer.start();
   };

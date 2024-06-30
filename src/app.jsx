@@ -4,7 +4,7 @@ import "./app.css";
 import { initAnalyticsWithSuperProperties } from "./api/mixpanel";
 import { Chat } from "./pages/Chat/Chat";
 import store from "./redux/store";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { initialChatConversations } from "./const/messages";
 import { generateIdleChatConversations } from "./engine/messageProcessor";
 import { processRepliesWithDelay } from "./engine/replyProcessor";
@@ -13,15 +13,15 @@ import { BOT_IDLE_TIMEOUT } from "./const/app";
 
 const App = () => {
   const [conversations, setConversations] = useState(initialChatConversations);
-  const [isBotLoading, setIsBotLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     initAnalyticsWithSuperProperties();
   }, []);
 
-  const onIdle = () => {
+  const onIdle = async () => {
     const botReplies = generateIdleChatConversations();
-    processRepliesWithDelay(botReplies, setIsBotLoading, setConversations);
+    await processRepliesWithDelay(botReplies, setConversations, dispatch);
   };
 
   const idleTimer = useIdleTimer({
@@ -34,8 +34,6 @@ const App = () => {
     <Chat
       conversations={conversations}
       setConversations={setConversations}
-      isBotLoading={isBotLoading}
-      setIsBotLoading={setIsBotLoading}
       idleTimer={idleTimer}
     />
   );
