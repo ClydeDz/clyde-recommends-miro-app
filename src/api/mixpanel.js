@@ -1,6 +1,6 @@
 import mixpanel from "mixpanel-browser";
 
-export const initAnalyticsWithSuperProperties = () => {
+export const initAnalytics = () => {
   // import.meta.env.MODE
   try {
     mixpanel.init(import.meta.env.VITE_MIXPANEL_TOKEN, {
