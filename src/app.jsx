@@ -26,23 +26,22 @@ const App = () => {
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
   };
 
-  const onActive = () => {
-    console.log("on active"); // This isn't triggering
-    dispatch(setIsBotActive(true));
-  };
-
   const idleTimer = useIdleTimer({
     onIdle,
-    onActive,
-    timeout: 6000, //BOT_IDLE_TIMEOUT,
+    timeout: BOT_IDLE_TIMEOUT,
     stopOnIdle: true,
   });
+
+  const activateTimer = () => {
+    idleTimer.start();
+    dispatch(setIsBotActive(true));
+  };
 
   return (
     <Chat
       conversations={conversations}
       setConversations={setConversations}
-      idleTimer={idleTimer}
+      activateTimer={activateTimer}
     />
   );
 };

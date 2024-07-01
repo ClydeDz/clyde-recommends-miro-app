@@ -22,7 +22,7 @@ import { processRepliesWithDelay } from "../../engine/replyProcessor";
 import { setIsBotLoading } from "../../redux/appSlice";
 
 export const Chat = (props) => {
-  const { conversations, setConversations, idleTimer } = props;
+  const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
   const isBotLoading = useSelector((state) => state.app.isBotLoading);
 
@@ -38,7 +38,7 @@ export const Chat = (props) => {
     const botReplies = processBotReplies(userMessage, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
-    botReplies && botReplies.length > 0 && idleTimer.start();
+    botReplies && botReplies.length > 0 && activateTimer();
   };
 
   return (
