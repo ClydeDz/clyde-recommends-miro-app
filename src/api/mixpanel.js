@@ -1,7 +1,6 @@
 import mixpanel from "mixpanel-browser";
 
 export const initAnalytics = () => {
-  // import.meta.env.MODE
   try {
     mixpanel.init(import.meta.env.VITE_MIXPANEL_TOKEN, {
       debug: true,
@@ -13,10 +12,15 @@ export const initAnalytics = () => {
   }
 };
 
-export const sendPageViewEvent = (page) => {
+export const sendTemplateVisitedEvent = (props) => {
   try {
-    console.log("iheifh eifhei");
-    //mixpanel.track("Page view", { page });
+    mixpanel.track("Template visited", {
+      template_id: props.templateId,
+      template_title: props.templateTitle,
+      template_url: props.templateUrl,
+      search_terms: props.searchTerms,
+      search_keywords: props.searchKeywords,
+    });
   } catch {
     undefined;
   }

@@ -2,9 +2,12 @@ import * as React from "react";
 import { Message, Avatar } from "@chatscope/chat-ui-kit-react";
 import { CHAT_FROM } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
+import { sendTemplateVisitedEvent } from "../../api/mixpanel";
+import { useSelector } from "react-redux";
 
 export const Recommendation = (props) => {
   const { message, nextMessage, index } = props;
+  const { searchTerms, searchKeywords } = useSelector((state) => state.search);
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 
   return (
@@ -29,6 +32,15 @@ export const Recommendation = (props) => {
           <div>{message.template.description}</div>
           <a
             href={message.template.url}
+            onClick={() =>
+              sendTemplateVisitedEvent({
+                templateId: message.template.id,
+                templateTitle: message.template.title,
+                templateUrl: message.template.url,
+                searchTerms,
+                searchKeywords,
+              })
+            }
             target="_blank"
             class="button button-primary button-small"
           >

@@ -4,6 +4,7 @@ import {
   IDLE_PRELOADED_MESSAGES,
   idleChatConversations,
 } from "../const/messages";
+import { setRecommendedTemplate } from "../redux/recommendationSlice";
 import { setSearchKeywords } from "../redux/searchSlice";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 import { removeStopwords } from "stopword";
@@ -55,6 +56,14 @@ export const processBotReplies = (userMessage, dispatch) => {
       },
     ];
   }
+
+  dispatch(
+    setRecommendedTemplate({
+      id: templatePicked.id,
+      title: templatePicked.title,
+      url: templatePicked.url,
+    })
+  );
 
   return [
     {
