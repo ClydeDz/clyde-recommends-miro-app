@@ -14,35 +14,23 @@ export const initAnalytics = () => {
 
 export const sendTemplateVisitedEvent = (props) => {
   try {
-    mixpanel.track("Template visited", {
-      template_id: props.templateId,
-      template_title: props.templateTitle,
-      template_url: props.templateUrl,
-      search_terms: props.searchTerms,
-      search_keywords: props.searchKeywords,
-    });
+    mixpanel.track("Template visited", { ...props });
   } catch {
     undefined;
   }
 };
 
-export const sendLinkClickedEvent = (props) => {
+export const sendPreconfiguredCommandEvent = (command, props = undefined) => {
   try {
-    mixpanel.track("Link clicked", {
-      destination_url: props.link,
-      link_type: props.type,
-      page_location: props.location,
-    });
+    mixpanel.track(command, { ...props });
   } catch {
     undefined;
   }
 };
 
-export const sendNavigationClickedEvent = (pageType) => {
+export const sendEmailRegisteredEvent = (props) => {
   try {
-    mixpanel.track("Navigation clicked", {
-      page: pageType,
-    });
+    mixpanel.track("Email registered", { ...props });
   } catch {
     undefined;
   }

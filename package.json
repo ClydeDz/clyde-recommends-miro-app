@@ -10,6 +10,7 @@
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@reduxjs/toolkit": "^2.2.6",
+    "emails-in-string": "^2.0.0",
     "mirotone": "5",
     "mixpanel-browser": "^2.53.0",
     "react": "^18.2.0",

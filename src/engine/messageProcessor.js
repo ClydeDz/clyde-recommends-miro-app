@@ -1,11 +1,14 @@
+import { sendPreconfiguredCommandEvent } from "../api/mixpanel";
 import {
   CHAT_FROM,
   CHAT_TYPE,
   IDLE_PRELOADED_MESSAGES,
+  PRECONFIGURED_COMMANDS,
   idleChatConversations,
 } from "../const/messages";
 import { setRecommendedTemplate } from "../redux/recommendationSlice";
 import { setSearchKeywords } from "../redux/searchSlice";
+import { processBotStaticReplies } from "./staticMessageProcessor";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 import { removeStopwords } from "stopword";
 
@@ -19,19 +22,9 @@ export const processUserMessage = (userMessage) => {
 };
 
 export const processBotReplies = (userMessage, dispatch) => {
-  if (userMessage === IDLE_PRELOADED_MESSAGES.HELP_YES) {
-    return [
-      {
-        type: CHAT_TYPE.TEXT,
-        from: CHAT_FROM.BOT,
-        timestamp: new Date().toLocaleString(),
-        contents: `Type in keywords of what Miro template you're looking for. E.g. retrospective`,
-      },
-    ];
-  }
-
-  if (userMessage === IDLE_PRELOADED_MESSAGES.HELP_NO) {
-    return [];
+  const { exit, payload } = processBotStaticReplies(userMessage, dispatch);
+  if (exit) {
+    return payload;
   }
 
   const messageExcludingFillers = removeFillerWords(userMessage);

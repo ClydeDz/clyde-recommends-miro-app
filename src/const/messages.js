@@ -37,6 +37,19 @@ export const IDLE_PRELOADED_MESSAGES = {
   HELP_NO: "No, I'm good",
 };
 
+export const PRECONFIGURED_COMMANDS = {
+  HELP: "Help",
+  HELP_NO: "No help",
+  FEEDBACK: "Feedback",
+  ABOUT: "About",
+};
+
+export const PRECONFIGURED_FEEDBACK_MESSAGES = {
+  NEEDS_IMPROVEMENT: "Could be better",
+  NEUTRAL: "Neutral",
+  AMAZING: "Amazing",
+};
+
 export const idleChatConversations = [
   {
     type: CHAT_TYPE.SPACER,

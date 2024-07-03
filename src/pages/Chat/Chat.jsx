@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   MainContainer,
   ChatContainer,
@@ -25,6 +25,10 @@ export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
   const isBotLoading = useSelector((state) => state.app.isBotLoading);
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, [conversations]);
 
   const onSendButtonClick = async (userMessage) => {
     dispatch(setIsBotLoading(true));

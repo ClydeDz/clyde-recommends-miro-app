@@ -34,11 +34,11 @@ export const Recommendation = (props) => {
             href={message.template.url}
             onClick={() =>
               sendTemplateVisitedEvent({
-                templateId: message.template.id,
-                templateTitle: message.template.title,
-                templateUrl: message.template.url,
-                searchTerms,
-                searchKeywords,
+                template_id: message.template.id,
+                template_title: message.template.title,
+                template_url: message.template.url,
+                search_terms: searchTerms,
+                search_keywords: searchKeywords,
               })
             }
             target="_blank"
