@@ -1,4 +1,8 @@
-import { sendPreconfiguredCommandEvent } from "../api/mixpanel";
+import {
+  sendPreconfiguredCommandEvent,
+  sendTemplateFoundEvent,
+  sendTemplateNotFoundEvent,
+} from "../api/mixpanel";
 import {
   CHAT_FROM,
   CHAT_TYPE,
@@ -40,6 +44,11 @@ export const processBotReplies = (userMessage, dispatch) => {
   console.log(templatePicked);
 
   if (!templatePicked) {
+    sendTemplateNotFoundEvent({
+      ["Search Terms"]: userMessage,
+      ["Search Keywords"]: keywords,
+    });
+
     return [
       {
         type: CHAT_TYPE.TEXT,
@@ -58,6 +67,14 @@ export const processBotReplies = (userMessage, dispatch) => {
     })
   );
 
+  sendTemplateFoundEvent({
+    ["Template ID"]: templatePicked.id,
+    ["Template Title"]: templatePicked.title,
+    ["Template URL"]: templatePicked.url,
+    ["Search Terms"]: userMessage,
+    ["Search Keywords"]: keywords,
+  });
+
   return [
     {
       type: CHAT_TYPE.TEXT,
@@ -69,7 +86,6 @@ export const processBotReplies = (userMessage, dispatch) => {
       type: CHAT_TYPE.RECOMMENDATION,
       from: CHAT_FROM.BOT,
       timestamp: new Date().toLocaleString(),
-      contents: `blah blah`,
       template: { ...templatePicked },
     },
   ];

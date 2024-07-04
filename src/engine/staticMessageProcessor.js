@@ -43,7 +43,7 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
 
   if (isEqualCaseInsensitive(userMessage, PRECONFIGURED_COMMANDS.FEEDBACK)) {
     sendPreconfiguredCommandEvent(PRECONFIGURED_COMMANDS.FEEDBACK, {
-      category: "Initiated",
+      Category: "Initiated",
     });
     // TODO: save preference in state
     return {
@@ -84,7 +84,7 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     )
   ) {
     sendPreconfiguredCommandEvent(PRECONFIGURED_COMMANDS.FEEDBACK, {
-      category: userMessage,
+      Category: userMessage,
     });
     // TODO: save preference in state
     return {
@@ -104,8 +104,8 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
 
   if (uniqueEmails.length > 0) {
     sendEmailRegisteredEvent({
-      email: uniqueEmails.join(", "),
-      user_message: userMessage,
+      Email: uniqueEmails.join(", "),
+      ["User Message"]: userMessage,
     });
     return {
       exit: true,

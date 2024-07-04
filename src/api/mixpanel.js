@@ -35,3 +35,19 @@ export const sendEmailRegisteredEvent = (props) => {
     undefined;
   }
 };
+
+export const sendTemplateFoundEvent = (props) => {
+  try {
+    mixpanel.track("Template found", { ...props });
+  } catch {
+    undefined;
+  }
+};
+
+export const sendTemplateNotFoundEvent = (props) => {
+  try {
+    mixpanel.track("Template not found", { ...props });
+  } catch {
+    undefined;
+  }
+};
