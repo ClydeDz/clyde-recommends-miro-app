@@ -65,7 +65,6 @@ export const MIRO_TEMPLATES = [
       "workshops",
       "digital",
       "exercise",
-      "Miro retrospective",
     ],
   },
   {
@@ -75,8 +74,9 @@ export const MIRO_TEMPLATES = [
     description:
       "Embark on an epic journey through the galaxy with these Star Wars-themed jigsaw puzzles! 4 puzzles to mark the fourth! ",
     tags: [
-      "Star Wars Puzzle",
-      "Star Wars",
+      "Puzzle",
+      "Star",
+      "Wars",
       "Puzzle",
       "jigsaw",
       "galaxy",
@@ -84,20 +84,19 @@ export const MIRO_TEMPLATES = [
       "poster",
       "characters",
       "adventure",
-      "May the Fourth Be With You",
+      "Fourth",
+      "May",
       "challenge",
       "fun",
       "theme",
       "journey",
       "interactive",
-      "team building",
       "team",
       "building",
       "icebreaker",
       "game",
       "digital",
       "saga",
-      "puzzle time",
     ],
   },
   {
@@ -107,7 +106,10 @@ export const MIRO_TEMPLATES = [
     description:
       "The 4-step retrospective board is intended to quickly add a simple retrospective template for your retro sessions. ",
     tags: [
+      "4",
+      "four",
       "4-Step",
+      "simple",
       "step",
       "team",
       "reflection",
@@ -159,7 +161,6 @@ export const MIRO_TEMPLATES = [
       "adventure",
       "game",
       "navigation",
-      "online maze",
       "exercise",
       "group",
       "activity",
@@ -192,7 +193,6 @@ export const MIRO_TEMPLATES = [
       "adventure",
       "game",
       "navigation",
-      "online maze",
       "exercise",
       "group",
       "activity",
@@ -224,7 +224,6 @@ export const MIRO_TEMPLATES = [
       "adventure",
       "game",
       "navigation",
-      "online maze",
       "exercise",
       "group",
       "activity",
@@ -351,6 +350,10 @@ export const MIRO_TEMPLATES = [
       "event",
       "engagement",
       "creative",
+      "exhibit",
+      "exhibition",
+      "science",
+      "fair",
     ],
   },
   {
@@ -363,6 +366,7 @@ export const MIRO_TEMPLATES = [
       "Egg",
       "Easter",
       "Prompts",
+      "jesus",
       "Easter-themed",
       "icebreaker",
       "game",
@@ -378,6 +382,7 @@ export const MIRO_TEMPLATES = [
       "bunny",
       "collaboration",
       "creative",
+      "basket",
     ],
   },
   {
@@ -390,6 +395,7 @@ export const MIRO_TEMPLATES = [
       "Earth",
       "Day",
       "eco-friendly",
+      "ecofriendly",
       "activity",
       "game",
       "waste",
@@ -419,6 +425,7 @@ export const MIRO_TEMPLATES = [
       "In this Earth Day-based activity, let's find out how eco-friendly of a team you are. 🌍",
     tags: [
       "Eco-Friendly",
+      "EcoFriendly",
       "activity",
       "team",
       "engagement",
@@ -428,11 +435,13 @@ export const MIRO_TEMPLATES = [
       "collaboration",
       "green",
       "eco-conscious",
+      "ecoconscious",
       "virtual",
       "interactive",
       "sustainability",
       "impact",
       "goals",
+      "game",
       "exercise",
     ],
   },
@@ -469,6 +478,7 @@ export const MIRO_TEMPLATES = [
       "exercise",
       "hopeful",
       "protection",
+      "chalk",
       "planet",
     ],
   },
@@ -536,7 +546,19 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/mirocooked-icebreaker-template/
     description:
       "Your challenge for today is to help these two chefs in the kitchen and put together a delicious pizza for our guests. ",
-    tags: ["Mirocooked Icebreaker"],
+    tags: [
+      "Mirocooked",
+      "Icebreaker",
+      "cook",
+      "masterchef",
+      "pizza",
+      "byo",
+      "kitchen",
+      "activity",
+      "team",
+      "building",
+      "overcooked",
+    ],
   },
   {
     id: "o9J_lqtgU9c=",
@@ -545,7 +567,17 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/bulls-eye-feedback/
     description:
       "Include Bulls Eye Feedback in any of your existing workshop Miro boards to get your team's feedback on your workshop by asking them to place one of the custom made darts anywhere in the target.",
-    tags: ["Bulls Eye Feedback"],
+    tags: [
+      "Bulls",
+      "Eye",
+      "Feedback",
+      "bull",
+      "target",
+      "dart",
+      "arrow",
+      "bow",
+      "aim",
+    ],
   },
   {
     id: "uXjVNENHsLg=",
@@ -554,7 +586,21 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/whats-your-cupid-name-template/
     description:
       "In this Valentine's Day-themed icebreaker, get your participants to create their cupid name. You do this by combining a sweet adjective corresponding to the first letter of your name with a cute romantic nickname corresponding to the month you were born.",
-    tags: ["What's Your Cupid Name?"],
+    tags: [
+      "Cupid",
+      "name",
+      "guess",
+      "icebreaker",
+      "game",
+      "virtual",
+      "activity",
+      "team",
+      "building",
+      "valentine",
+      "feb",
+      "february",
+      "14",
+    ],
   },
   {
     id: "uXjVPNKBYEU=",
@@ -591,7 +637,20 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/cupid-swipe-retro-template/
     description:
       "This Valentine's Day, indulge in a dating app-themed retrospective board. 💖",
-    tags: ["Cupid"],
+    tags: [
+      "Cupid",
+      "valentine",
+      "date",
+      "dating",
+      "feb",
+      "february",
+      "14",
+      "retrospective",
+      "agile",
+      "scrum",
+      "app",
+      "retro",
+    ],
   },
   {
     id: "uXjVNGV8jhE=",
@@ -600,7 +659,23 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/love-hate-cupid-swipe-icebreaker-template/
     description:
       "A dating app-style icebreaker to get to know what your participants like and dislike and to get the conversations started. Use this in February as a Valentine's Day icebreaker or just any other time of the year for some giggles. ",
-    tags: ["Cupid"],
+    tags: [
+      "Cupid",
+      "valentine",
+      "date",
+      "dating",
+      "feb",
+      "february",
+      "14",
+      "retrospective",
+      "agile",
+      "scrum",
+      "app",
+      "retro",
+      "love",
+      "hate",
+      "swipe",
+    ],
   },
   {
     id: "uXjVNE24j1g=",
@@ -609,7 +684,15 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/sense-of-appreciation-template/
     description:
       "With the help of some Japanese concepts, let's learn to appreciate the different aspects of life in this self-reflection board.",
-    tags: ["Appreciation"],
+    tags: [
+      "Appreciation",
+      "Japanese",
+      "Japan",
+      "appreciate",
+      "self-reflection",
+      "reflection",
+      "sense",
+    ],
   },
   {
     id: "uXjVNIeY7hc=",
@@ -618,7 +701,18 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/lean-coffee-cafe-template/
     description:
       "Welcome to the Lean Coffee Cafe! Today, we have a caffeine-infused three-course menu — we start with items to discuss, then we'll proceed to items we're currently discussing, and finally, items that we've discussed. ☕",
-    tags: ["Coffee"],
+    tags: [
+      "Coffee",
+      "lean",
+      "cafe",
+      "caffeine",
+      "three",
+      "course",
+      "menu",
+      "mocha",
+      "latte",
+      "café",
+    ],
   },
   {
     id: "uXjVO4yVWAI=",
@@ -674,6 +768,7 @@ export const MIRO_TEMPLATES = [
       "workflows",
       "interactive",
       "exercise",
+      "human",
     ],
   },
   {
@@ -683,7 +778,18 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/frosty-firestarters/
     description:
       "Thanks for cloning this Frosty Firestarter's template. This is a simple icebreaker template which contains heaps of dragon-themed prompt cards in the center of the deck. 🐉",
-    tags: ["Frosty Firestarter's"],
+    tags: [
+      "Frosty",
+      "Firestarter's",
+      "Firestarter",
+      "fire",
+      "dragon",
+      "prompt",
+      "icebreaker",
+      "game",
+      "activity",
+      "cards",
+    ],
   },
   {
     id: "uXjVNJA2FJo=",
@@ -692,7 +798,19 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/hang-those-christmas-stockings-template/
     description:
       "Let's keep the Christmas stocking tradition alive virtually using this simple Miro board. Wondering how? Follow along! 🎄🎅🧦",
-    tags: ["Hang Those Christmas Stockings"],
+    tags: [
+      "Hang",
+      "Christmas",
+      "Stocking",
+      "xmas",
+      "stocking",
+      "sock",
+      "socks",
+      "santa",
+      "game",
+      "activity",
+      "tradition",
+    ],
   },
   {
     id: "o9J_lCs6DkM=",
@@ -702,10 +820,21 @@ export const MIRO_TEMPLATES = [
     description:
       "When performing a retrospective on the Island of Golocans, remember to cover all four directions. Have a pleasant time exploring this island!",
     tags: [
-      "Retrospective in the Island of Golocans",
-      "featured template",
-      "award winning",
-      "one piece",
+      "Retrospective",
+      "retro",
+      "Golocans",
+      "Island",
+      "featured",
+      "winning",
+      "award",
+      "one",
+      "piece",
+      "strawberry",
+      "gold",
+      "pirate",
+      "bottle",
+      "explore",
+      "exploration",
     ],
   },
   {
@@ -715,7 +844,21 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/would-you-rather-shopping-edition-template/
     description:
       "To play a game of 'Would You Rather,' gather a group of participants and take turns presenting each other with a choice between two hypothetical options, often amusing, creating interesting dilemmas. Participants must choose a side using and might also go about explaining their choice if they'd like.",
-    tags: ["Would You Rather? Shopping Edition"],
+    tags: [
+      "Shopping",
+      "Edition",
+      "shop",
+      "black",
+      "friday",
+      "nov",
+      "november",
+      "game",
+      "icebreaker",
+      "amusing",
+      "creative",
+      "interesting",
+      "dilemma",
+    ],
   },
   {
     id: "uXjVNTaX6tw=",
@@ -724,7 +867,17 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/black-friday-bingo-cards-template/
     description:
       "To play, choose a bingo card set and then ask each other if you've ever had these shopping experiences. Each person gets a card from the selected set. If you have had the shopping experience, mark the square with the marker provided.",
-    tags: ["Black Friday Bingo Cards"],
+    tags: [
+      "Black",
+      "Friday",
+      "Bingo",
+      "Card",
+      "nov",
+      "november",
+      "game",
+      "icebreaker",
+      "amusing",
+    ],
   },
   {
     id: "o9J_l9J6AHY=",
@@ -733,7 +886,7 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/the-writing-process/
     description:
       "The writing process can be overwhelming at times. But it doesn't always have to be. To make your life smooth, I've created this all-in-one template that you can copy and fill up.",
-    tags: ["The Writing Process"],
+    tags: ["Writing", "process", "write"],
   },
   {
     id: "uXjVNSuta38=",
