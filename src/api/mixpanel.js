@@ -20,17 +20,9 @@ export const sendTemplateVisitedEvent = (props) => {
   }
 };
 
-export const sendPreconfiguredCommandEvent = (command, props = undefined) => {
+export const sendHelpEvent = (props) => {
   try {
-    mixpanel.track(command, { ...props });
-  } catch {
-    undefined;
-  }
-};
-
-export const sendEmailRegisteredEvent = (props) => {
-  try {
-    mixpanel.track("Email registered", { ...props });
+    mixpanel.track("Help", { ...props });
   } catch {
     undefined;
   }

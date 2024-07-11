@@ -1,5 +1,5 @@
 import {
-  sendPreconfiguredCommandEvent,
+  sendHelpEvent,
   sendTemplateFoundEvent,
   sendTemplateNotFoundEvent,
 } from "../api/mixpanel";
