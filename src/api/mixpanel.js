@@ -43,3 +43,11 @@ export const sendTemplateNotFoundEvent = (props) => {
     undefined;
   }
 };
+
+export const sendFeedbackEvent = (props) => {
+  try {
+    mixpanel.track("Feedback", { ...props });
+  } catch {
+    undefined;
+  }
+};

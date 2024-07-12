@@ -82,9 +82,40 @@ img {
   color: var(--light-color);
 }
 
-.cs-message.cs-message--incoming .cs-message__content:has(.cs-button) {
+.cs-message.cs-message--incoming .cs-message__content:has(.actions-template),
+.cs-message.cs-message--incoming
+  .cs-message__content:has(.recommendation-feedback-template) {
   background: transparent;
   padding: 0;
+}
+
+.cs-message__content-wrapper:has(.recommendation-feedback-template) {
+  display: block;
+  width: 98%;
+}
+
+.recommendation-feedback-template {
+  display: flex;
+  justify-content: end;
+}
+
+.recommendation-feedback-template .feedback-btn {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 6px 9px;
+  border-radius: 0.7em;
+  transition: 0.3s;
+}
+
+.recommendation-feedback-template .feedback-btn:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  transition: 0.3s;
+}
+
+.recommendation-feedback-template svg {
+  height: 18px;
+  width: 18px;
 }
 
 .cs-message .cs-button {
@@ -92,6 +123,31 @@ img {
   color: var(--dark-color);
   border-radius: 0.7em;
   margin-bottom: 4px;
+}
+
+.cs-message .actions-template .cs-button {
+  background: var(--miro-grey);
+  transition: 0.3s;
+}
+
+.cs-message .actions-template .cs-button:hover {
+  background: var(--light-color);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.cs-message .recommendation-template .cs-button {
+  background: var(--light-color);
+  margin: 9px 0;
+  padding: 6px 0;
+  border-radius: 0.7em;
+  transition: 0.3s;
+}
+
+.cs-message .recommendation-template .cs-button:hover {
+  background: var(--miro-grey);
+  opacity: 1;
+  transition: 0.3s;
 }
 
 .cs-message .cs-button.cs-button--border {

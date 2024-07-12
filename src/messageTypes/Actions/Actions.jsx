@@ -25,7 +25,11 @@ export const Actions = (props) => {
       <Message.CustomContent>
         <div className="actions-template">
           {message.actions.map((action) => (
-            <Button border onClick={() => onSendButtonClick(action)}>
+            <Button
+              border
+              onClick={() => onSendButtonClick(action)}
+              className="action-btn"
+            >
               {action}
             </Button>
           ))}

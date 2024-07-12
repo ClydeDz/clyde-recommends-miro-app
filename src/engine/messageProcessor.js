@@ -88,6 +88,11 @@ export const processBotReplies = (userMessage, dispatch) => {
       timestamp: new Date().toLocaleString(),
       template: { ...templatePicked },
     },
+    {
+      type: CHAT_TYPE.RECOMMENDATION_FEEDBACK,
+      from: CHAT_FROM.BOT,
+      timestamp: new Date().toLocaleString(),
+    },
   ];
 };
 

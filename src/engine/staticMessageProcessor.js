@@ -2,6 +2,7 @@ import { sendHelpEvent } from "../api/mixpanel";
 import {
   CHAT_FROM,
   CHAT_TYPE,
+  FEEDBACK_OPTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
 } from "../const/messages";
@@ -34,6 +35,26 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     sendHelpEvent({ ["Category"]: "No help" });
     // TODO: save preference in state
     return { exit: true, payload: [] };
+  }
+
+  if (
+    isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.LIKE) ||
+    isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.DISLIKE)
+  ) {
+    console.log(userMessage);
+    // sendHelpEvent({ ["Category"]: "No help" });
+    // TODO: save preference in state
+    return {
+      exit: true,
+      payload: [
+        {
+          type: CHAT_TYPE.TEXT,
+          from: CHAT_FROM.BOT,
+          timestamp: new Date().toLocaleString(),
+          contents: `Thanks for your feedback. Please consider clicking on the survey link below to provide me with some more details.`,
+        },
+      ],
+    };
   }
 
   return { exit: false, payload: null };

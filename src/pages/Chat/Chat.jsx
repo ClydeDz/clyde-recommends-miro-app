@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
 import { processRepliesWithDelay } from "../../engine/replyProcessor";
 import { setIsBotLoading } from "../../redux/appSlice";
+import { RecommendationFeedback } from "../../messageTypes/RecommendationFeedback/RecommendationFeedback";
 
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
@@ -30,14 +31,15 @@ export const Chat = (props) => {
     window.scrollTo(0, document.body.scrollHeight);
   }, [conversations]);
 
-  const onSendButtonClick = async (userMessage) => {
+  const onSendButtonClick = async (userMessage, silentUserMessage = false) => {
     dispatch(setIsBotLoading(true));
-    dispatch(setSearchTerms(userMessage));
+    !silentUserMessage && dispatch(setSearchTerms(userMessage));
 
-    setConversations((oldArray) => [
-      ...oldArray,
-      { ...processUserMessage(userMessage) },
-    ]);
+    !silentUserMessage &&
+      setConversations((oldArray) => [
+        ...oldArray,
+        { ...processUserMessage(userMessage) },
+      ]);
 
     const botReplies = processBotReplies(userMessage, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
@@ -94,6 +96,19 @@ export const Chat = (props) => {
                           ? conversations[index + 1]
                           : undefined
                       }
+                    />
+                  ),
+                  convo.type === CHAT_TYPE.RECOMMENDATION_FEEDBACK && (
+                    <RecommendationFeedback
+                      message={convo}
+                      index={index}
+                      key={index}
+                      nextMessage={
+                        conversations[index + 1]
+                          ? conversations[index + 1]
+                          : undefined
+                      }
+                      onSendButtonClick={onSendButtonClick}
                     />
                   ),
                   convo.type === CHAT_TYPE.SPACER && <Spacer />,
