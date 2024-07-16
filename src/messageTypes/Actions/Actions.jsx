@@ -7,7 +7,13 @@ import { ExternalLink } from "./ExternalLink/ExternalLink";
 import { Feedback } from "./Feedback/Feedback";
 
 export const Actions = (props) => {
-  const { message, nextMessage, index, onSendButtonClick } = props;
+  const {
+    message,
+    nextMessage,
+    index,
+    onSendButtonClick,
+    onFeedbackRegistered,
+  } = props;
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 
   return (
@@ -28,12 +34,17 @@ export const Actions = (props) => {
       <Message.CustomContent>
         {message.actions && (
           <MessagePills
-            message={props.message}
-            onSendButtonClick={props.onSendButtonClick}
+            message={message}
+            onSendButtonClick={onSendButtonClick}
           />
         )}
         {message.feedback && (
-          <Feedback onSendButtonClick={props.onSendButtonClick} />
+          <Feedback
+            id={message.feedback.id}
+            buttons={message.feedback.buttons}
+            selected={message.feedback.selected}
+            onFeedbackButtonClick={onFeedbackRegistered}
+          />
         )}
         {message.redirect && (
           <ExternalLink

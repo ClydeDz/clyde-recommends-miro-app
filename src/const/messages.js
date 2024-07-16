@@ -17,8 +17,8 @@ export const CHAT_FROM = {
 };
 
 export const FEEDBACK_OPTIONS = {
-  LIKE: "FEEDBACK_LIKE",
-  DISLIKE: "FEEDBACK_DISLIKE",
+  LIKE: "Like",
+  DISLIKE: "Dislike",
 };
 
 export const initialChatConversations = [
@@ -45,7 +45,11 @@ export const initialChatConversations = [
     type: CHAT_TYPE.ACTIONS,
     from: CHAT_FROM.BOT,
     timestamp: new Date().toLocaleString(),
-    feedback: ["like", "dislike"],
+    feedback: {
+      buttons: [FEEDBACK_OPTIONS.LIKE, FEEDBACK_OPTIONS.DISLIKE],
+      id: Math.random(),
+      selected: undefined,
+    },
   },
   {
     type: CHAT_TYPE.ACTIONS,

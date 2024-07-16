@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
 import { processRepliesWithDelay } from "../../engine/replyProcessor";
 import { setIsBotLoading } from "../../redux/appSlice";
-import { RecommendationFeedback } from "../../messageTypes/RecommendationFeedback/RecommendationFeedback";
 
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
@@ -42,6 +41,31 @@ export const Chat = (props) => {
       ]);
 
     const botReplies = processBotReplies(userMessage, dispatch);
+    await processRepliesWithDelay(botReplies, setConversations, dispatch);
+
+    botReplies && botReplies.length > 0 && activateTimer();
+  };
+
+  const onFeedbackRegistered = async (feedbackOptionClicked, id) => {
+    const newConversations = conversations.map((conversation) => {
+      if (
+        conversation.type === CHAT_TYPE.ACTIONS &&
+        conversation.feedback &&
+        conversation.feedback.id === id
+      ) {
+        return {
+          ...conversation,
+          feedback: {
+            ...conversation.feedback,
+            selected: feedbackOptionClicked,
+          },
+        };
+      }
+      return conversation;
+    });
+    setConversations(newConversations);
+
+    const botReplies = processBotReplies(feedbackOptionClicked, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -84,6 +108,7 @@ export const Chat = (props) => {
                           : undefined
                       }
                       onSendButtonClick={onSendButtonClick}
+                      onFeedbackRegistered={onFeedbackRegistered}
                     />
                   ),
                   convo.type === CHAT_TYPE.RECOMMENDATION && (
@@ -96,19 +121,6 @@ export const Chat = (props) => {
                           ? conversations[index + 1]
                           : undefined
                       }
-                    />
-                  ),
-                  convo.type === CHAT_TYPE.RECOMMENDATION_FEEDBACK && (
-                    <RecommendationFeedback
-                      message={convo}
-                      index={index}
-                      key={index}
-                      nextMessage={
-                        conversations[index + 1]
-                          ? conversations[index + 1]
-                          : undefined
-                      }
-                      onSendButtonClick={onSendButtonClick}
                     />
                   ),
                   convo.type === CHAT_TYPE.SPACER && <Spacer />,
