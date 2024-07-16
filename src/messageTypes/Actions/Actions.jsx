@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Message, Avatar, Button } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM } from "../../const/messages";
+import { CHAT_FROM, CHAT_TYPE } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
+import { MessagePills } from "./MessagePills/MessagePills";
+import { ExternalLink } from "./ExternalLink/ExternalLink";
+import { Feedback } from "./Feedback/Feedback";
 
 export const Actions = (props) => {
   const { message, nextMessage, index, onSendButtonClick } = props;
@@ -23,17 +26,21 @@ export const Actions = (props) => {
       avatarSpacer={true}
     >
       <Message.CustomContent>
-        <div className="actions-template">
-          {message.actions.map((action) => (
-            <Button
-              border
-              onClick={() => onSendButtonClick(action)}
-              className="action-btn"
-            >
-              {action}
-            </Button>
-          ))}
-        </div>
+        {message.actions && (
+          <MessagePills
+            message={props.message}
+            onSendButtonClick={props.onSendButtonClick}
+          />
+        )}
+        {message.feedback && (
+          <Feedback onSendButtonClick={props.onSendButtonClick} />
+        )}
+        {message.redirect && (
+          <ExternalLink
+            url={message.redirect.url}
+            display={message.redirect.displayText}
+          />
+        )}
       </Message.CustomContent>
     </Message>
   );

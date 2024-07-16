@@ -53,6 +53,15 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
           timestamp: new Date().toLocaleString(),
           contents: `Thanks for your feedback. Please consider clicking on the survey link below to provide me with some more details.`,
         },
+        {
+          type: CHAT_TYPE.ACTIONS,
+          from: CHAT_FROM.BOT,
+          timestamp: new Date().toLocaleString(),
+          redirect: {
+            url: "https://chatscope.io/storybook/react/?path=/docs/components-button--docs",
+            displayText: "Survey",
+          },
+        },
       ],
     };
   }

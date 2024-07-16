@@ -5,6 +5,9 @@ export const CHAT_TYPE = {
   RECOMMENDATION: "recommendation",
   RECOMMENDATION_FEEDBACK: "recommendation feedback",
   ACTIONS: "actions",
+  ACTIONS_REDIRECT: "ACTIONS_REDIRECT",
+  ACTIONS_FEEDBACK: "ACTIONS_FEEDBACK",
+  ACTIONS_OPTIONS: "ACTIONS_OPTIONS",
   SPACER: "spacer",
 };
 
@@ -39,9 +42,19 @@ export const initialChatConversations = [
     },
   },
   {
-    type: CHAT_TYPE.RECOMMENDATION_FEEDBACK,
+    type: CHAT_TYPE.ACTIONS,
     from: CHAT_FROM.BOT,
     timestamp: new Date().toLocaleString(),
+    feedback: ["like", "dislike"],
+  },
+  {
+    type: CHAT_TYPE.ACTIONS,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().toLocaleString(),
+    redirect: {
+      url: "https://chatscope.io/storybook/react/?path=/docs/components-button--docs",
+      displayText: "Survey",
+    },
   },
   {
     type: CHAT_TYPE.ACTIONS,

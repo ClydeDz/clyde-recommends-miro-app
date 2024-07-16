@@ -84,6 +84,8 @@ img {
 
 .cs-message.cs-message--incoming .cs-message__content:has(.actions-template),
 .cs-message.cs-message--incoming
+  .cs-message__content:has(.external-link-template),
+.cs-message.cs-message--incoming
   .cs-message__content:has(.recommendation-feedback-template) {
   background: transparent;
   padding: 0;
@@ -155,6 +157,14 @@ img {
   padding: 0.6em 0.9em;
 }
 
+.cs-message .external-link-template .cs-button.cs-button--border {
+  border: 1.1px solid var(--primary-color);
+}
+
+.cs-message .external-link-template .cs-button.cs-button--border:hover {
+  border: 1.1px solid var(--dark-color);
+}
+
 .cs-message-list {
   background-color: var(--miro-grey);
   padding-top: 9px;
@@ -196,4 +206,23 @@ img {
 
 .cs-typing-indicator__text {
   color: var(--primary-color);
+}
+
+.cs-message .external-link-template .cs-button.cs-button--border {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  transition: 0.3s;
+}
+
+.cs-message .external-link-template .cs-button.cs-button--border:hover {
+  cursor: pointer;
+  background-color: var(--dark-color);
+  transition: 0.3s;
+}
+
+.external-link-template svg {
+  display: inline;
+  height: 14px;
+  vertical-align: middle;
 }
