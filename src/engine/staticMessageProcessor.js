@@ -1,4 +1,5 @@
 import { sendHelpEvent } from "../api/mixpanel";
+import { FEEDBACK_FORM_URL } from "../const/app";
 import {
   CHAT_FROM,
   CHAT_TYPE,
@@ -6,6 +7,7 @@ import {
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
 } from "../const/messages";
+import { setHelpRequired } from "../redux/appSlice";
 
 const isEqualCaseInsensitive = (arg1, arg2) => {
   return arg1.toLowerCase() === arg2.toLowerCase();
@@ -16,8 +18,9 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_YES) ||
     isEqualCaseInsensitive(userMessage, PRECONFIGURED_COMMANDS.HELP)
   ) {
-    sendHelpEvent({ ["Category"]: "Needs help" });
-    // TODO: save preference in state
+    sendHelpEvent({ ["Help required"]: true });
+    dispatch(setHelpRequired(true));
+
     return {
       exit: true,
       payload: [
@@ -32,8 +35,9 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
   }
 
   if (isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_NO)) {
-    sendHelpEvent({ ["Category"]: "No help" });
-    // TODO: save preference in state
+    sendHelpEvent({ ["Help required"]: false });
+    dispatch(setHelpRequired(false));
+
     return { exit: true, payload: [] };
   }
 
@@ -41,8 +45,6 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.LIKE) ||
     isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.DISLIKE)
   ) {
-    // sendHelpEvent({ ["Category"]: "No help" });
-    // TODO: save preference in state
     return {
       exit: true,
       payload: [
@@ -50,15 +52,15 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
           type: CHAT_TYPE.TEXT,
           from: CHAT_FROM.BOT,
           timestamp: new Date().toLocaleString(),
-          contents: `Thanks for your feedback. Please consider clicking on the survey link below to provide me with some more details.`,
+          contents: `Thanks for your feedback. Please consider clicking on the link below to provide me with some detailed feedback.`,
         },
         {
           type: CHAT_TYPE.ACTIONS,
           from: CHAT_FROM.BOT,
           timestamp: new Date().toLocaleString(),
           redirect: {
-            url: "https://chatscope.io/storybook/react/?path=/docs/components-button--docs",
-            displayText: "Survey",
+            url: FEEDBACK_FORM_URL,
+            displayText: "I'd love to hear from you",
           },
         },
       ],

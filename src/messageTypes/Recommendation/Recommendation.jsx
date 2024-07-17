@@ -12,11 +12,11 @@ export const Recommendation = (props) => {
 
   const onVisitTemplateBtnClick = () => {
     sendTemplateVisitedEvent({
-      ["Template ID"]: message.template.id,
-      ["Template Title"]: message.template.title,
-      ["Template URL"]: message.template.url,
-      ["Search Terms"]: searchTerms,
-      ["Search Keywords"]: searchKeywords,
+      ["Template id"]: message.template.id,
+      ["Template title"]: message.template.title,
+      ["Template url"]: message.template.url,
+      ["Search terms"]: searchTerms,
+      ["Search keywords"]: searchKeywords,
     });
     window.open(message.template.url, "_blank");
   };

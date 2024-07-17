@@ -9,7 +9,7 @@ import {
   FEEDBACK_OPTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
-  idleChatConversations,
+  IDLE_CHAT_CONVERSATIONS,
 } from "../const/messages";
 import { setRecommendedTemplate } from "../redux/recommendationSlice";
 import { setSearchKeywords } from "../redux/searchSlice";
@@ -39,15 +39,10 @@ export const processBotReplies = (userMessage, dispatch) => {
 
   dispatch(setSearchKeywords(keywords));
 
-  console.log(messageExcludingFillers);
-  console.log(keywords);
-  console.log(templates);
-  console.log(templatePicked);
-
   if (!templatePicked) {
     sendTemplateNotFoundEvent({
-      ["Search Terms"]: userMessage,
-      ["Search Keywords"]: keywords,
+      ["Search terms"]: userMessage,
+      ["Search keywords"]: keywords,
     });
 
     return [
@@ -113,7 +108,7 @@ export const processBotReplies = (userMessage, dispatch) => {
 };
 
 export const generateIdleChatConversations = () => {
-  return idleChatConversations;
+  return IDLE_CHAT_CONVERSATIONS;
 };
 
 const removeFillerWords = (message) => {

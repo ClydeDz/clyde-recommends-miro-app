@@ -6,6 +6,7 @@ export const appSlice = createSlice({
     isBotLoading: false,
     isBotActive: true,
     feedbackGiven: false,
+    helpRequired: undefined,
   },
   reducers: {
     setIsBotLoading: (state, action) => {
@@ -17,10 +18,17 @@ export const appSlice = createSlice({
     setFeedbackGiven: (state, action) => {
       state.feedbackGiven = action.payload;
     },
+    setHelpRequired: (state, action) => {
+      state.helpRequired = action.payload;
+    },
   },
 });
 
-export const { setIsBotLoading, setIsBotActive, setFeedbackGiven } =
-  appSlice.actions;
+export const {
+  setIsBotLoading,
+  setIsBotActive,
+  setFeedbackGiven,
+  setHelpRequired,
+} = appSlice.actions;
 
 export default appSlice.reducer;

@@ -17,13 +17,13 @@ export const FEEDBACK_OPTIONS = {
   DISLIKE: "Dislike",
 };
 
-export const initialChatConversations = [
+export const INITIAL_CHAT_CONVERSATIONS = [
   {
     type: CHAT_TYPE.TEXT,
     from: CHAT_FROM.BOT,
     timestamp: new Date().toLocaleString(),
     contents:
-      "Hi! Welcome to Clyde Recommends!\n\nTry clicking one of the prompts below to get a Miro template recommendation.",
+      "Hi! Welcome to Clyde Recommends!\n\nClick one of the prompts below to get a recommendation for a Miro template created by me—Clyde.",
   },
   // {
   //   type: CHAT_TYPE.RECOMMENDATION,
@@ -77,7 +77,7 @@ export const PRECONFIGURED_COMMANDS = {
   HELP: "Help",
 };
 
-export const idleChatConversations = [
+export const IDLE_CHAT_CONVERSATIONS = [
   {
     type: CHAT_TYPE.SPACER,
     from: CHAT_FROM.BOT,

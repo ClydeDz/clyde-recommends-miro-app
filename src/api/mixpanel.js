@@ -60,7 +60,6 @@ export const sendExternalLinkClickedEvent = (props) => {
   }
 };
 
-
 export const sendQuickActionClickedEvent = (props) => {
   try {
     mixpanel.track("Quick action clicked", { ...props });
@@ -69,3 +68,10 @@ export const sendQuickActionClickedEvent = (props) => {
   }
 };
 
+export const sendIdleChatEvent = () => {
+  try {
+    mixpanel.track("Chat idle");
+  } catch {
+    undefined;
+  }
+};
