@@ -5,6 +5,7 @@ export const appSlice = createSlice({
   initialState: {
     isBotLoading: false,
     isBotActive: true,
+    feedbackGiven: false,
   },
   reducers: {
     setIsBotLoading: (state, action) => {
@@ -13,9 +14,13 @@ export const appSlice = createSlice({
     setIsBotActive: (state, action) => {
       state.isBotActive = action.payload;
     },
+    setFeedbackGiven: (state, action) => {
+      state.feedbackGiven = action.payload;
+    },
   },
 });
 
-export const { setIsBotLoading, setIsBotActive } = appSlice.actions;
+export const { setIsBotLoading, setIsBotActive, setFeedbackGiven } =
+  appSlice.actions;
 
 export default appSlice.reducer;

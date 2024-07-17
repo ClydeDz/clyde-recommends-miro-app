@@ -51,3 +51,21 @@ export const sendFeedbackEvent = (props) => {
     undefined;
   }
 };
+
+export const sendExternalLinkClickedEvent = (props) => {
+  try {
+    mixpanel.track("External link clicked", { ...props });
+  } catch {
+    undefined;
+  }
+};
+
+
+export const sendQuickActionClickedEvent = (props) => {
+  try {
+    mixpanel.track("Quick action clicked", { ...props });
+  } catch {
+    undefined;
+  }
+};
+

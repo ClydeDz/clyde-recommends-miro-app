@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Button } from "@chatscope/chat-ui-kit-react";
 
-export const MessagePills = (props) => {
-  const { message, onSendButtonClick } = props;
+export const QuickActions = (props) => {
+  const { message, onActionBtnClicked } = props;
 
   return (
     <div className="actions-template">
       {message.actions.map((action) => (
         <Button
           border
-          onClick={() => onSendButtonClick(action)}
+          onClick={() => onActionBtnClicked(action)}
           className="action-btn"
         >
           {action}

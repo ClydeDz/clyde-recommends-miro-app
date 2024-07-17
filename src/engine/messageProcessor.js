@@ -6,6 +6,7 @@ import {
 import {
   CHAT_FROM,
   CHAT_TYPE,
+  FEEDBACK_OPTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
   idleChatConversations,
@@ -54,7 +55,17 @@ export const processBotReplies = (userMessage, dispatch) => {
         type: CHAT_TYPE.TEXT,
         from: CHAT_FROM.BOT,
         timestamp: new Date().toLocaleString(),
-        contents: `Sorry, I couldn't find a template that matches that criteria. Perhaps try looking up different keywords?`,
+        contents: `Sorry, I couldn't find a template that matches that criteria. Perhaps try looking up different keywords or click on one of the examples below?`,
+      },
+      {
+        type: CHAT_TYPE.ACTIONS,
+        from: CHAT_FROM.BOT,
+        timestamp: new Date().toLocaleString(),
+        actions: [
+          "Give me a retrospective template",
+          "Recommend an icebreaker",
+          "I want to collect feedback",
+        ],
       },
     ];
   }
@@ -68,11 +79,11 @@ export const processBotReplies = (userMessage, dispatch) => {
   );
 
   sendTemplateFoundEvent({
-    ["Template ID"]: templatePicked.id,
-    ["Template Title"]: templatePicked.title,
-    ["Template URL"]: templatePicked.url,
-    ["Search Terms"]: userMessage,
-    ["Search Keywords"]: keywords,
+    ["Template id"]: templatePicked.id,
+    ["Template title"]: templatePicked.title,
+    ["Template url"]: templatePicked.url,
+    ["Search terms"]: userMessage,
+    ["Search keywords"]: keywords,
   });
 
   return [
@@ -89,9 +100,14 @@ export const processBotReplies = (userMessage, dispatch) => {
       template: { ...templatePicked },
     },
     {
-      type: CHAT_TYPE.RECOMMENDATION_FEEDBACK,
+      type: CHAT_TYPE.ACTIONS,
       from: CHAT_FROM.BOT,
       timestamp: new Date().toLocaleString(),
+      feedback: {
+        buttons: [FEEDBACK_OPTIONS.LIKE, FEEDBACK_OPTIONS.DISLIKE],
+        id: Math.random(),
+        selected: undefined,
+      },
     },
   ];
 };

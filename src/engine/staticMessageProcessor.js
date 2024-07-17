@@ -41,7 +41,6 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.LIKE) ||
     isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.DISLIKE)
   ) {
-    console.log(userMessage);
     // sendHelpEvent({ ["Category"]: "No help" });
     // TODO: save preference in state
     return {

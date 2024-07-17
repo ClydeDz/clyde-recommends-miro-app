@@ -19,26 +19,34 @@ import { Spacer } from "../../messageTypes/Spacer/Spacer";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
 import { processRepliesWithDelay } from "../../engine/replyProcessor";
-import { setIsBotLoading } from "../../redux/appSlice";
+import { setFeedbackGiven, setIsBotLoading } from "../../redux/appSlice";
+import {
+  sendFeedbackEvent,
+  sendQuickActionClickedEvent,
+} from "../../api/mixpanel";
 
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
-  const isBotLoading = useSelector((state) => state.app.isBotLoading);
+  const { isBotLoading, feedbackGiven } = useSelector((state) => state.app);
+  const recommendedTemplate = useSelector(
+    (state) => state.recommendation.recommendedTemplate
+  );
+  const { searchKeywords, searchTerms } = useSelector((state) => state.search);
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
   }, [conversations]);
 
-  const onSendButtonClick = async (userMessage, silentUserMessage = false) => {
+  const onSendButtonClick = async (userMessage) => {
     dispatch(setIsBotLoading(true));
-    !silentUserMessage && dispatch(setSearchTerms(userMessage));
+    dispatch(setSearchTerms(userMessage));
+    dispatch(setFeedbackGiven(false));
 
-    !silentUserMessage &&
-      setConversations((oldArray) => [
-        ...oldArray,
-        { ...processUserMessage(userMessage) },
-      ]);
+    setConversations((oldArray) => [
+      ...oldArray,
+      { ...processUserMessage(userMessage) },
+    ]);
 
     const botReplies = processBotReplies(userMessage, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
@@ -65,10 +73,29 @@ export const Chat = (props) => {
     });
     setConversations(newConversations);
 
+    dispatch(setFeedbackGiven(true));
+    sendFeedbackEvent({
+      ["Feedback given"]: feedbackOptionClicked,
+      ["Template id"]: recommendedTemplate.id,
+      ["Template title"]: recommendedTemplate.title,
+      ["Template url"]: recommendedTemplate.url,
+      ["Search terms"]: searchTerms,
+      ["Search keywords"]: searchKeywords,
+    });
+
+    if (feedbackGiven) return;
+
     const botReplies = processBotReplies(feedbackOptionClicked, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
+  };
+
+  const onQuickActionClicked = (actionButtonText) => {
+    sendQuickActionClickedEvent({
+      ["Quick action button"]: actionButtonText,
+    });
+    onSendButtonClick(actionButtonText);
   };
 
   return (
@@ -84,10 +111,10 @@ export const Chat = (props) => {
                   )
                 }
               >
-                {conversations.map((convo, index) => [
-                  convo.type === CHAT_TYPE.TEXT && (
+                {conversations.map((conversation, index) => [
+                  conversation.type === CHAT_TYPE.TEXT && (
                     <Text
-                      message={convo}
+                      message={conversation}
                       index={index}
                       key={index}
                       nextMessage={
@@ -97,9 +124,9 @@ export const Chat = (props) => {
                       }
                     />
                   ),
-                  convo.type === CHAT_TYPE.ACTIONS && (
+                  conversation.type === CHAT_TYPE.ACTIONS && (
                     <Actions
-                      message={convo}
+                      message={conversation}
                       index={index}
                       key={index}
                       nextMessage={
@@ -107,13 +134,13 @@ export const Chat = (props) => {
                           ? conversations[index + 1]
                           : undefined
                       }
-                      onSendButtonClick={onSendButtonClick}
+                      onActionBtnClicked={onQuickActionClicked}
                       onFeedbackRegistered={onFeedbackRegistered}
                     />
                   ),
-                  convo.type === CHAT_TYPE.RECOMMENDATION && (
+                  conversation.type === CHAT_TYPE.RECOMMENDATION && (
                     <Recommendation
-                      message={convo}
+                      message={conversation}
                       index={index}
                       key={index}
                       nextMessage={
@@ -123,7 +150,7 @@ export const Chat = (props) => {
                       }
                     />
                   ),
-                  convo.type === CHAT_TYPE.SPACER && <Spacer />,
+                  conversation.type === CHAT_TYPE.SPACER && <Spacer />,
                 ])}
               </MessageList>
               <MessageInput

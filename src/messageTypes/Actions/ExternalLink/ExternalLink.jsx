@@ -1,18 +1,19 @@
 import * as React from "react";
 import { Button } from "@chatscope/chat-ui-kit-react";
+import { sendExternalLinkClickedEvent } from "../../../api/mixpanel";
 
 export const ExternalLink = (props) => {
-  const { url, display } = props;
+  const { url, displayText } = props;
+
+  const onExternalLinkClick = () => {
+    window.open(url, "_blank");
+    sendExternalLinkClickedEvent({ website: url });
+  };
 
   return (
     <div className="external-link-template">
-      <Button
-        border
-        onClick={() => {
-          window.open(url, "_blank");
-        }}
-      >
-        {display}
+      <Button border onClick={() => onExternalLinkClick()}>
+        {displayText}
         <svg
           width="24"
           height="24"

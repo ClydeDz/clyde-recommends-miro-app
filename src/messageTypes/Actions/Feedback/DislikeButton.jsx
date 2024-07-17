@@ -5,11 +5,11 @@ const iconColor = "#4DB6AC";
 const selectedIconColor = "#091e05";
 
 export const DislikeButton = (props) => {
-  const { onClick, isSelected } = props;
+  const { id, onClick, isSelected } = props;
 
   return (
     <span
-      onClick={() => onClick(FEEDBACK_OPTIONS.LIKE, id)}
+      onClick={() => onClick(FEEDBACK_OPTIONS.DISLIKE, id)}
       className="feedback-btn"
     >
       <svg

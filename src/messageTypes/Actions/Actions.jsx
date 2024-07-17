@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Message, Avatar, Button } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM, CHAT_TYPE } from "../../const/messages";
+import { Message, Avatar } from "@chatscope/chat-ui-kit-react";
+import { CHAT_FROM } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
-import { MessagePills } from "./MessagePills/MessagePills";
+import { QuickActions } from "./QuickActions/QuickActions";
 import { ExternalLink } from "./ExternalLink/ExternalLink";
 import { Feedback } from "./Feedback/Feedback";
 
@@ -11,7 +11,7 @@ export const Actions = (props) => {
     message,
     nextMessage,
     index,
-    onSendButtonClick,
+    onActionBtnClicked,
     onFeedbackRegistered,
   } = props;
   const isConsecutive = nextMessage && nextMessage.from == message.from;
@@ -33,9 +33,9 @@ export const Actions = (props) => {
     >
       <Message.CustomContent>
         {message.actions && (
-          <MessagePills
+          <QuickActions
             message={message}
-            onSendButtonClick={onSendButtonClick}
+            onActionBtnClicked={onActionBtnClicked}
           />
         )}
         {message.feedback && (
@@ -49,7 +49,7 @@ export const Actions = (props) => {
         {message.redirect && (
           <ExternalLink
             url={message.redirect.url}
-            display={message.redirect.displayText}
+            displayText={message.redirect.displayText}
           />
         )}
       </Message.CustomContent>
