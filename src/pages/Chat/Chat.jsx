@@ -108,7 +108,9 @@ export const Chat = (props) => {
                 scrollBehavior="auto"
                 autoScrollToBottom={true}
                 typingIndicator={
-                  <TypingIndicator content={`${BOT_NAME} is typing`} />
+                  isBotLoading && (
+                    <TypingIndicator content={`${BOT_NAME} is typing`} />
+                  )
                 }
               >
                 {conversations.map((conversation, index) => [
