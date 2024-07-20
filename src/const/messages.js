@@ -12,7 +12,7 @@ export const CHAT_FROM = {
   USER: "User",
 };
 
-export const FEEDBACK_OPTIONS = {
+export const REACTIONS = {
   LIKE: "Like",
   DISLIKE: "Dislike",
 };

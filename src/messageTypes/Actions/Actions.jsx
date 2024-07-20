@@ -4,7 +4,7 @@ import { CHAT_FROM } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
 import { QuickActions } from "./QuickActions/QuickActions";
 import { ExternalLink } from "./ExternalLink/ExternalLink";
-import { Feedback } from "./Feedback/Feedback";
+import { Reactions } from "./Reactions/Reactions";
 
 export const Actions = (props) => {
   const {
@@ -12,7 +12,7 @@ export const Actions = (props) => {
     nextMessage,
     index,
     onActionBtnClicked,
-    onFeedbackRegistered,
+    onReactionRegistered,
   } = props;
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 
@@ -38,12 +38,12 @@ export const Actions = (props) => {
             onActionBtnClicked={onActionBtnClicked}
           />
         )}
-        {message.feedback && (
-          <Feedback
-            id={message.feedback.id}
-            buttons={message.feedback.buttons}
-            selected={message.feedback.selected}
-            onFeedbackButtonClick={onFeedbackRegistered}
+        {message.reactions && (
+          <Reactions
+            id={message.reactions.id}
+            buttons={message.reactions.buttons}
+            selected={message.reactions.selected}
+            onReactionButtonClick={onReactionRegistered}
           />
         )}
         {message.redirect && (

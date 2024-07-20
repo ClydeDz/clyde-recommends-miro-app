@@ -6,7 +6,7 @@ import {
 import {
   CHAT_FROM,
   CHAT_TYPE,
-  FEEDBACK_OPTIONS,
+  REACTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
   IDLE_CHAT_CONVERSATIONS,
@@ -98,8 +98,8 @@ export const processBotReplies = (userMessage, dispatch) => {
       type: CHAT_TYPE.ACTIONS,
       from: CHAT_FROM.BOT,
       timestamp: new Date().toLocaleString(),
-      feedback: {
-        buttons: [FEEDBACK_OPTIONS.LIKE, FEEDBACK_OPTIONS.DISLIKE],
+      reactions: {
+        buttons: [REACTIONS.LIKE, REACTIONS.DISLIKE],
         id: Math.random(),
         selected: undefined,
       },

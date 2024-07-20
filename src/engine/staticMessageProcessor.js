@@ -3,7 +3,7 @@ import { FEEDBACK_FORM_URL } from "../const/app";
 import {
   CHAT_FROM,
   CHAT_TYPE,
-  FEEDBACK_OPTIONS,
+  REACTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
 } from "../const/messages";
@@ -52,8 +52,8 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
   }
 
   if (
-    isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.LIKE) ||
-    isEqualCaseInsensitive(userMessage, FEEDBACK_OPTIONS.DISLIKE)
+    isEqualCaseInsensitive(userMessage, REACTIONS.LIKE) ||
+    isEqualCaseInsensitive(userMessage, REACTIONS.DISLIKE)
   ) {
     return {
       exit: true,

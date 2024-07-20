@@ -3,7 +3,7 @@ export const BOT_AVATAR_URL = "/src/assets/clyde.png";
 
 export const BOT_IDLE_TIMEOUT = 60000;
 
-export const FEEDBACK_BUTTONS = {
+export const REACTIONS_BUTTON = {
   COLOR: "#4DB6AC",
   SELECTED_COLOR: "#009688",
 };

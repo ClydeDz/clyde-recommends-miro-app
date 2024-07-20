@@ -175,25 +175,24 @@ body {
 .cs-message.cs-message--incoming .cs-message__content:has(.actions-template),
 .cs-message.cs-message--incoming
   .cs-message__content:has(.external-link-template),
-.cs-message.cs-message--incoming
-  .cs-message__content:has(.recommendation-feedback-template) {
+.cs-message.cs-message--incoming .cs-message__content:has(.reactions-template) {
   background: transparent;
   padding: 0;
 }
 
 /* --------------- Reactions --------------- */
 
-.recommendation-feedback-template {
+.reactions-template {
   display: flex;
   justify-content: end;
 }
 
-.cs-message__content-wrapper:has(.recommendation-feedback-template) {
+.cs-message__content-wrapper:has(.reactions-template) {
   display: block;
   width: 100%;
 }
 
-.recommendation-feedback-template span {
+.reactions-template span {
   cursor: pointer;
   background-color: transparent;
   padding: 6px 9px;
@@ -201,18 +200,18 @@ body {
   transition: 0.3s;
 }
 
-.recommendation-feedback-template span:hover {
+.reactions-template span:hover {
   background-color: var(--secondary-color);
   transition: 0.3s;
 }
 
-.recommendation-feedback-template span.disabled,
-.recommendation-feedback-template span.disabled:hover {
+.reactions-template span.disabled,
+.reactions-template span.disabled:hover {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.recommendation-feedback-template svg {
+.reactions-template svg {
   height: 18px;
   width: 18px;
 }

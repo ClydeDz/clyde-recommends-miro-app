@@ -54,18 +54,18 @@ export const Chat = (props) => {
     botReplies && botReplies.length > 0 && activateTimer();
   };
 
-  const onFeedbackRegistered = async (feedbackOptionClicked, id) => {
+  const onReactionRegistered = async (reactionClicked, id) => {
     const newConversations = conversations.map((conversation) => {
       if (
         conversation.type === CHAT_TYPE.ACTIONS &&
-        conversation.feedback &&
-        conversation.feedback.id === id
+        conversation.reactions &&
+        conversation.reactions.id === id
       ) {
         return {
           ...conversation,
-          feedback: {
-            ...conversation.feedback,
-            selected: feedbackOptionClicked,
+          reactions: {
+            ...conversation.reactions,
+            selected: reactionClicked,
           },
         };
       }
@@ -75,7 +75,7 @@ export const Chat = (props) => {
 
     dispatch(setFeedbackGiven(true));
     sendFeedbackEvent({
-      ["Feedback given"]: feedbackOptionClicked,
+      ["Reaction"]: reactionClicked,
       ["Template id"]: recommendedTemplate.id,
       ["Template title"]: recommendedTemplate.title,
       ["Template url"]: recommendedTemplate.url,
@@ -85,7 +85,7 @@ export const Chat = (props) => {
 
     if (feedbackGiven) return;
 
-    const botReplies = processBotReplies(feedbackOptionClicked, dispatch);
+    const botReplies = processBotReplies(reactionClicked, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -135,7 +135,7 @@ export const Chat = (props) => {
                           : undefined
                       }
                       onActionBtnClicked={onQuickActionClicked}
-                      onFeedbackRegistered={onFeedbackRegistered}
+                      onReactionRegistered={onReactionRegistered}
                     />
                   ),
                   conversation.type === CHAT_TYPE.RECOMMENDATION && (
