@@ -1070,7 +1070,21 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/secret-santa/
     description:
       "With Miro, we can continue the tradition of Secret Santa and leave virtual presents for one another under the Christmas tree.",
-    tags: ["Secret Santa"],
+    tags: [
+      "Secret",
+      "Santa",
+      "christmas",
+      "xmas",
+      "holiday",
+      "icebreaker",
+      "winter",
+      "summer",
+      "north-pole",
+      "pole",
+      "reindeer",
+      "gift",
+      "gifting",
+    ],
   },
   {
     id: "uXjVMPm7QnM=",
@@ -1079,7 +1093,16 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/eye-to-eye-retrospective/
     description:
       "Retrospective is a time to reflect on the eyes and lows. Bring out your clear lenses and let's see things differently with this retrospective template. ",
-    tags: ["Eye to Eye Retrospective"],
+    tags: [
+      "Eye ",
+      "Retrospective",
+      "retro",
+      "agile",
+      "scrum",
+      "reflection",
+      "vision",
+      "team",
+    ],
   },
   {
     id: "uXjVMJf_TrA=",
@@ -1088,7 +1111,14 @@ export const MIRO_TEMPLATES = [
     //https://miro.com/miroverse/memories-scrapboard/
     description:
       "This is a scrapboard. Instead of writing your messages and sticking pictures in a book of blank pages, you'll put all of that in this Memories Scrapboard.",
-    tags: ["Memories Scrapboard"],
+    tags: [
+      "Memories",
+      "Scrapboard",
+      "scrapbook",
+      "farewell",
+      "well",
+      "message",
+    ],
   },
   {
     id: "o9J_l6Ot8hk=",
@@ -1097,6 +1127,16 @@ export const MIRO_TEMPLATES = [
     // https://miro.com/miroverse/hand-drawn-lean-canvas/
     description:
       "Lean Canvas is a 1-page business plan template created by Ash Maurya that helps you deconstruct your idea into its key assumptions, now on Miro.",
-    tags: ["Hand-Drawn Lean Canvas"],
+    tags: [
+      "Hand-Drawn",
+      "Lean",
+      "Canvas",
+      "business",
+      "plan",
+      "strengths",
+      "usp",
+      "unique",
+      "maurya",
+    ],
   },
 ];

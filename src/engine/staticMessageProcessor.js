@@ -30,6 +30,16 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
           timestamp: new Date().toLocaleString(),
           contents: `Type in keywords of what Miro template you're looking for. E.g. retrospective`,
         },
+        {
+          type: CHAT_TYPE.ACTIONS,
+          from: CHAT_FROM.BOT,
+          timestamp: new Date().toLocaleString(),
+          actions: [
+            "Give me a retrospective template",
+            "Recommend an icebreaker",
+            "I want to collect feedback",
+          ],
+        },
       ],
     };
   }

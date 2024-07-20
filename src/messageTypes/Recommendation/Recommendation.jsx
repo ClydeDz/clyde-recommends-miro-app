@@ -39,8 +39,8 @@ export const Recommendation = (props) => {
       <Message.CustomContent>
         <div className="recommendation-template">
           <img src={`/src/assets/templates/${message.template.id}.jpg`} />
-          <div>{message.template.title}</div>
-          <div>{message.template.description}</div>
+          <h3>{message.template.title}</h3>
+          <p>{message.template.description}</p>
           <Button onClick={() => onVisitTemplateBtnClick()}>
             Check it out
           </Button>

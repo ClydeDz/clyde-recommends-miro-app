@@ -16,6 +16,8 @@
   box-sizing: border-box;
 }
 
+/* --------------- Chat container --------------- */
+
 body {
   display: flex;
 }
@@ -28,150 +30,69 @@ body {
   max-height: 100vh;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.full-height {
+.grid.wrapper,
+.grid.wrapper > div {
   height: 100%;
 }
 
 .cs-message-list {
   max-height: 88vh;
+  background-color: var(--miro-grey);
+  padding-top: 9px;
 }
 
+/* --------------- Basic chat elements --------------- */
+
+.cs-message.cs-message--outgoing,
 .cs-message.cs-message--outgoing.cs-message--single:not(:first-child),
-.cs-message-list .cs-message.cs-message--outgoing,
-.cs-message-list .cs-message-group.cs-message-group--outgoing {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
+.cs-message.cs-message--outgoing.cs-message--first {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: -0.5em;
 }
 
-.recommendation-template {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.cs-message.cs-message--incoming.cs-message--first {
+  margin-bottom: 6px;
 }
 
-.recommendation-template > img {
-  scale: 1.13;
-}
-
-.recommendation-template > div:first-of-type {
-  margin-top: 18px;
-  font-size: medium;
-  font-weight: bold;
-}
-
-.recommendation-template > a.button {
-  margin: 9px 0;
-  justify-content: center;
+.cs-message__content,
+.cs-button {
+  color: var(--dark-color);
+  font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
 }
 
 .cs-message.cs-message--outgoing .cs-message__content,
 .cs-message.cs-message--outgoing.cs-message--first .cs-message__content {
-  border: 0;
-  background: white;
+  background: var(--light-color);
 }
 
 .cs-message.cs-message--incoming .cs-message__content,
 .cs-message.cs-message--incoming.cs-message--first .cs-message__content {
-  border: 0;
   background: var(--primary-color);
   color: var(--light-color);
 }
 
-.cs-message.cs-message--incoming .cs-message__content:has(.actions-template),
-.cs-message.cs-message--incoming
-  .cs-message__content:has(.external-link-template),
-.cs-message.cs-message--incoming
-  .cs-message__content:has(.recommendation-feedback-template) {
-  background: transparent;
-  padding: 0;
-}
-
-.cs-message__content-wrapper:has(.recommendation-feedback-template) {
-  display: block;
-  width: 98%;
-}
-
-.recommendation-feedback-template {
-  display: flex;
-  justify-content: end;
-}
-
-.recommendation-feedback-template .feedback-btn {
-  cursor: pointer;
-  background-color: transparent;
-  padding: 6px 9px;
-  border-radius: 0.7em;
-  transition: 0.3s;
-}
-
-.recommendation-feedback-template .feedback-btn:hover {
-  cursor: pointer;
-  background-color: var(--secondary-color);
-  transition: 0.3s;
-}
-
-.recommendation-feedback-template svg {
-  height: 18px;
-  width: 18px;
-}
-
 .cs-message .cs-button {
-  background: var(--miro-grey);
   color: var(--dark-color);
   border-radius: 0.7em;
-  margin-bottom: 4px;
-}
-
-.cs-message .actions-template .cs-button {
-  background: var(--miro-grey);
   transition: 0.3s;
+  padding: 6px 9px;
+  cursor: pointer;
 }
 
-.cs-message .actions-template .cs-button:hover {
-  background: var(--light-color);
-  opacity: 1;
-  transition: 0.3s;
-}
-
-.cs-message .recommendation-template .cs-button {
-  background: var(--light-color);
-  margin: 9px 0;
-  padding: 6px 0;
-  border-radius: 0.7em;
-  transition: 0.3s;
-}
-
-.cs-message .recommendation-template .cs-button:hover {
-  background: var(--miro-grey);
-  opacity: 1;
+.cs-message .cs-button:hover {
   transition: 0.3s;
 }
 
 .cs-message .cs-button.cs-button--border {
   border: 1.1px solid var(--primary-color);
-  padding: 0.6em 0.9em;
-}
-
-.cs-message .external-link-template .cs-button.cs-button--border {
-  border: 1.1px solid var(--primary-color);
-}
-
-.cs-message .external-link-template .cs-button.cs-button--border:hover {
-  border: 1.1px solid var(--dark-color);
-}
-
-.cs-message-list {
-  background-color: var(--miro-grey);
-  padding-top: 9px;
 }
 
 .cs-message-input__content-editor-wrapper,
-.cs-message-input__content-editor {
+.cs-message-input__content-editor,
+.cs-message-input__content-editor[disabled],
+.cs-message-input__content-editor-wrapper[disabled],
+.cs-message-input--disabled .cs-message-input__content-editor-wrapper {
   background-color: var(--miro-grey);
 }
 
@@ -179,17 +100,12 @@ img {
   color: var(--primary-color);
 }
 
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y,
 .ps__thumb-y {
+  /* Scrollbar in the text input */
   background-color: var(--primary-color);
-}
-
-.cs-message-separator,
-.cs-message-separator::before,
-.cs-message-separator::after {
-  color: var(--secondary-color);
-  background-color: var(--primary-color);
-  height: 0.1px;
-  opacity: 0.3;
 }
 
 .cs-message-list .cs-message-separator:not(:first-child) {
@@ -208,21 +124,136 @@ img {
   color: var(--primary-color);
 }
 
-.cs-message .external-link-template .cs-button.cs-button--border {
+.cs-message--incoming .cs-message__avatar {
+  margin: 0 4px 0 0;
+}
+
+.cs-message--incoming.cs-message--avatar-spacer {
+  margin-left: 46px;
+}
+
+/* --------------- Advance chat elements --------------- */
+
+.recommendation-template {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recommendation-template > img {
+  max-width: 100%;
+  height: auto;
+  scale: 1.13;
+}
+
+.recommendation-template > h3 {
+  margin-top: 18px;
+  margin-bottom: initial;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.recommendation-template > p {
+  font-size: small;
+  margin-block-start: 0.3em;
+  margin-block-end: 0.3em;
+  line-height: inherit;
+}
+
+.recommendation-template .cs-button {
+  background: var(--light-color);
+  margin: 9px 0;
+}
+
+.recommendation-template .cs-button:hover {
+  background: var(--miro-grey);
+  opacity: 1;
+}
+
+/* --------------- Common to actions template --------------- */
+
+.cs-message.cs-message--incoming .cs-message__content:has(.actions-template),
+.cs-message.cs-message--incoming
+  .cs-message__content:has(.external-link-template),
+.cs-message.cs-message--incoming
+  .cs-message__content:has(.recommendation-feedback-template) {
+  background: transparent;
+  padding: 0;
+}
+
+/* --------------- Reactions --------------- */
+
+.recommendation-feedback-template {
+  display: flex;
+  justify-content: end;
+}
+
+.cs-message__content-wrapper:has(.recommendation-feedback-template) {
+  display: block;
+  width: 100%;
+}
+
+.recommendation-feedback-template span {
   cursor: pointer;
-  background-color: var(--primary-color);
-  color: var(--light-color);
+  background-color: transparent;
+  padding: 6px 9px;
+  border-radius: 0.7em;
   transition: 0.3s;
 }
 
-.cs-message .external-link-template .cs-button.cs-button--border:hover {
-  cursor: pointer;
-  background-color: var(--dark-color);
+.recommendation-feedback-template span:hover {
+  background-color: var(--secondary-color);
   transition: 0.3s;
+}
+
+.recommendation-feedback-template span.disabled,
+.recommendation-feedback-template span.disabled:hover {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.recommendation-feedback-template svg {
+  height: 18px;
+  width: 18px;
+}
+
+/* --------------- Quick actions --------------- */
+
+.actions-template .cs-button {
+  background: var(--miro-grey);
+}
+
+.actions-template .cs-button:hover {
+  background: var(--light-color);
+  opacity: 1;
+}
+
+/* --------------- External link --------------- */
+
+.cs-message .external-link-template .cs-button.cs-button--border {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  margin: 0;
+}
+
+.cs-message .external-link-template .cs-button.cs-button--border:hover {
+  background-color: var(--dark-color);
+  border: 1.1px solid var(--dark-color);
 }
 
 .external-link-template svg {
   display: inline;
   height: 14px;
-  vertical-align: middle;
+  position: relative;
+  top: 3px;
+}
+
+/* --------------- Message separator --------------- */
+
+.cs-message-separator,
+.cs-message-separator::before,
+.cs-message-separator::after {
+  background-color: var(--primary-color);
+  height: 0.1px;
+  opacity: 0.3;
 }

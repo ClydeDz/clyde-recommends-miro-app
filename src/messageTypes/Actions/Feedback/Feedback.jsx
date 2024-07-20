@@ -14,6 +14,7 @@ export const Feedback = (props) => {
             id={id}
             isSelected={selected === FEEDBACK_OPTIONS.LIKE}
             onClick={onFeedbackButtonClick}
+            disabled={selected}
           />
         ),
         button === FEEDBACK_OPTIONS.DISLIKE && (
@@ -21,6 +22,7 @@ export const Feedback = (props) => {
             id={id}
             isSelected={selected === FEEDBACK_OPTIONS.DISLIKE}
             onClick={onFeedbackButtonClick}
+            disabled={selected}
           />
         ),
       ])}

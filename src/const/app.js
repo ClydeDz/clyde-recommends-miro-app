@@ -5,7 +5,7 @@ export const BOT_IDLE_TIMEOUT = 60000;
 
 export const FEEDBACK_BUTTONS = {
   COLOR: "#4DB6AC",
-  SELECTED_COLOR: "#091e05",
+  SELECTED_COLOR: "#009688",
 };
 
 export const FEEDBACK_FORM_URL = "https://forms.gle/WCfknyB4uCLZD83fA";

@@ -35,7 +35,7 @@ export const Chat = (props) => {
   const { searchKeywords, searchTerms } = useSelector((state) => state.search);
 
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight + 1000);
   }, [conversations]);
 
   const onSendButtonClick = async (userMessage) => {
@@ -100,15 +100,15 @@ export const Chat = (props) => {
 
   return (
     <>
-      <div className="grid wrapper full-height">
-        <div className="cs1 ce12 full-height">
+      <div className="grid wrapper">
+        <div className="cs1 ce12">
           <MainContainer style={{ height: "100%" }}>
             <ChatContainer>
               <MessageList
+                scrollBehavior="auto"
+                autoScrollToBottom={true}
                 typingIndicator={
-                  isBotLoading && (
-                    <TypingIndicator content={`${BOT_NAME} is typing`} />
-                  )
+                  <TypingIndicator content={`${BOT_NAME} is typing`} />
                 }
               >
                 {conversations.map((conversation, index) => [
