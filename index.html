@@ -8,35 +8,32 @@
     <title>Clyde Recommends</title>
   </head>
   <body>
-    <div id="root">
-      <div class="grid container">
-        <div class="cs1 ce12">
-          <img src="/welcome.png" alt="" />
-        </div>
-        <div class="cs1 ce12">
-          <h1>Great, your app is running locally</h1>
-          <p>
-            You can now create your Developer team to get your app running in
-            Miro.
-          </p>
-        </div>
-        <div class="cs1 ce12">
-          <a
-            class="button button-primary"
-            href="https://developers.miro.com/docs/create-a-developer-team"
-            target="_blank"
-          >
-            Create a Developer team
-          </a>
-        </div>
-        <div class="cs1 ce12">
-          <p>
-            To see your app, open it in a app panel on Miro.com, or preview it
-            at <a href="/app.html" class="link link-primary">this url</a>
-          </p>
-        </div>
-      </div>
+    <div class="public-app">
+      <div id="root"></div>
     </div>
+    <script type="module" src="/src/app.jsx"></script>
     <script type="module" src="/src/index.js"></script>
+    <style>
+      body {
+        background: url("/images/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0px -200px;
+      }
+      .public-app {
+        height: 100vh;
+        width: 35vw;
+        margin: auto;
+        overflow: hidden;
+      }
+      .public-app #root {
+        padding-top: 15px;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .public-app #root > div.grid.wrapper > div {
+        height: 95vh;
+      }
+    </style>
   </body>
 </html>
