@@ -46,7 +46,7 @@ body {
 .cs-message.cs-message--outgoing,
 .cs-message.cs-message--outgoing.cs-message--single:not(:first-child),
 .cs-message.cs-message--outgoing.cs-message--first {
-  margin-top: 1em;
+  margin-top: 0.9em;
   margin-bottom: 1em;
   margin-right: -0.5em;
 }
@@ -220,6 +220,7 @@ body {
 
 .actions-template .cs-button {
   background: var(--miro-grey);
+  margin-bottom: 4px;
 }
 
 .actions-template .cs-button:hover {

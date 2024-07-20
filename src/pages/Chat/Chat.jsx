@@ -35,7 +35,7 @@ export const Chat = (props) => {
   const { searchKeywords, searchTerms } = useSelector((state) => state.search);
 
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight + 1000);
+    window.scrollTo(0, document.body.scrollHeight);
   }, [conversations]);
 
   const onSendButtonClick = async (userMessage) => {

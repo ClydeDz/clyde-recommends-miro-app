@@ -1,7 +1,7 @@
 export const BOT_NAME = "Clyde";
 export const BOT_AVATAR_URL = "/src/assets/clyde.png";
 
-export const BOT_IDLE_TIMEOUT = 60000;
+export const BOT_IDLE_TIMEOUT = 600000;
 
 export const REACTIONS_BUTTON = {
   COLOR: "#4DB6AC",
