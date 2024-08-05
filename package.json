@@ -1,6 +1,6 @@
 {
   "name": "clyde-recommends",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "scripts": {
     "start": "vite",
@@ -19,7 +19,9 @@
     "stopword": "^3.0.1"
   },
   "devDependencies": {
+    "@clydedsouza/netlify-plugin-github-deploy-status": "^0.0.5",
     "@vitejs/plugin-react": "4.3.1",
+    "netlify-cli": "^17.33.5",
     "vite": "5.0.13"
   }
 }
