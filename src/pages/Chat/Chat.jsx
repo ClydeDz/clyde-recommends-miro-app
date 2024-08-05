@@ -13,7 +13,7 @@ import {
 } from "../../engine/messageProcessor";
 import { Text } from "../../messageTypes/Text/Text";
 import { Recommendation } from "../../messageTypes/Recommendation/Recommendation";
-import { BOT_NAME } from "../../const/app";
+import { BOT_NAME, FEEDBACK_FORM_URL, ISSUE_URL } from "../../const/app";
 import { Actions } from "../../messageTypes/Actions/Actions";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,7 @@ import { setSearchTerms } from "../../redux/searchSlice";
 import { processRepliesWithDelay } from "../../engine/replyProcessor";
 import { setFeedbackGiven, setIsBotLoading } from "../../redux/appSlice";
 import {
+  sendExternalLinkClickedEvent,
   sendFeedbackEvent,
   sendQuickActionClickedEvent,
 } from "../../api/mixpanel";
@@ -167,6 +168,26 @@ export const Chat = (props) => {
             </ChatContainer>
           </MainContainer>
         </div>
+        <footer className="cs1 ce12">
+          <a
+            class="link link-primary"
+            href={ISSUE_URL}
+            target="_blank"
+            onClick={() => sendExternalLinkClickedEvent({ website: ISSUE_URL })}
+          >
+            Report an issue
+          </a>
+          <a
+            class="link link-primary"
+            href={FEEDBACK_FORM_URL}
+            target="_blank"
+            onClick={() =>
+              sendExternalLinkClickedEvent({ website: FEEDBACK_FORM_URL })
+            }
+          >
+            Submit feedback
+          </a>
+        </footer>
       </div>
     </>
   );

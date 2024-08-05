@@ -9,3 +9,5 @@ export const REACTIONS_BUTTON = {
 };
 
 export const FEEDBACK_FORM_URL = "https://forms.gle/WCfknyB4uCLZD83fA";
+export const ISSUE_URL =
+  "https://github.com/ClydeDz/clyde-recommends-miro-app/issues/new";
