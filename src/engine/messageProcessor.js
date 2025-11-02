@@ -1,4 +1,5 @@
 import { IDLE_CHAT_CONVERSATIONS } from "../const/messages";
+import { setIsThirdPartyOffline } from "../redux/appSlice";
 import { processBotLocalReplies } from "./local/localProcessor";
 import {
   isStaticResponseRequired,
@@ -6,19 +7,22 @@ import {
 } from "./local/staticMessageProcessor";
 import { processBotThirdPartyReplies } from "./thirdParty/thirdPartyProcessor";
 
-const PROCESS_USING_THIRD_PARTY = true;
+export const processBotReplies = async (userMessage, dispatch, appState) => {
+  const { isThirdPartyOffline } = appState;
 
-export const processBotReplies = async (userMessage, dispatch) => {
   if (isStaticResponseRequired(userMessage)) {
     return processBotStaticReplies(userMessage, dispatch);
   }
 
+  const PROCESS_USING_THIRD_PARTY = import.meta.env
+    .VITE_PROCESS_USING_THIRD_PARTY;
+
   try {
-    return import.meta.env.VITE_PROCESS_USING_THIRD_PARTY
+    return PROCESS_USING_THIRD_PARTY && !isThirdPartyOffline
       ? await processBotThirdPartyReplies(userMessage, dispatch)
       : processBotLocalReplies(userMessage, dispatch);
   } catch (e) {
-    console.log("CATCH", e);
+    dispatch(setIsThirdPartyOffline(true));
     return processBotLocalReplies(userMessage, dispatch);
   }
 };

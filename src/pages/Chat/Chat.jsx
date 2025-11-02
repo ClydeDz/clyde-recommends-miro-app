@@ -29,7 +29,7 @@ import {
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
-  const { isBotLoading, feedbackGiven } = useSelector((state) => state.app);
+  const { isBotLoading, feedbackGiven, isThirdPartyOffline } = useSelector((state) => state.app);
   const recommendedTemplate = useSelector(
     (state) => state.recommendation.recommendedTemplate
   );
@@ -49,7 +49,7 @@ export const Chat = (props) => {
       { ...constructUserReply(userMessage) },
     ]);
 
-    const botReplies = await processBotReplies(userMessage, dispatch);
+    const botReplies = await processBotReplies(userMessage, dispatch, {isThirdPartyOffline});
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
