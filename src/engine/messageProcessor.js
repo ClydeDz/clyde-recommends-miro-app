@@ -14,8 +14,8 @@ export const processBotReplies = async (userMessage, dispatch, appState) => {
     return processBotStaticReplies(userMessage, dispatch);
   }
 
-  const PROCESS_USING_THIRD_PARTY = import.meta.env
-    .VITE_PROCESS_USING_THIRD_PARTY;
+  const PROCESS_USING_THIRD_PARTY =
+    import.meta.env.VITE_PROCESS_USING_THIRD_PARTY === "true";
 
   try {
     return PROCESS_USING_THIRD_PARTY && !isThirdPartyOffline
