@@ -14,8 +14,7 @@ export const processBotReplies = async (userMessage, dispatch) => {
   }
 
   try {
-    console.log(PROCESS_USING_THIRD_PARTY);
-    return PROCESS_USING_THIRD_PARTY
+    return import.meta.env.VITE_PROCESS_USING_THIRD_PARTY
       ? await processBotThirdPartyReplies(userMessage, dispatch)
       : processBotLocalReplies(userMessage, dispatch);
   } catch (e) {

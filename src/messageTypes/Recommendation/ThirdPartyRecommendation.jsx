@@ -41,8 +41,7 @@ export const ThirdPartyRecommendation = (props) => {
         <div className="recommendation-template">
           <img src={`/images/templates/${message.template.id}.jpg`} />
           <h3>{message.template.title}</h3>
-          <p>{message.template.description}</p>
-          <p>{message.template.url}</p>
+          <p>{message.template.description}</p> 
           {/* <p>{message.template.plainText}</p> */}
           <Button onClick={() => onVisitTemplateBtnClick()}>
             Check it out

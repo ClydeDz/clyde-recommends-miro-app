@@ -1,15 +1,4 @@
-// import { setRecommendedTemplate } from "../redux/recommendationSlice";
-// import { setSearchKeywords } from "../redux/searchSlice";
-// import { processBotStaticReplies } from "./local/staticMessageProcessor";
-// import { pickTemplate, recommendTemplates } from "./local/templateProcessor";
-// import { removeStopwords } from "stopword";
-import { AzureOpenAI } from "openai";
-import {
-  CHAT_FROM,
-  CHAT_SOURCE,
-  CHAT_TYPE,
-  REACTIONS,
-} from "../../const/messages";
+import { CHAT_SOURCE, CHAT_TYPE, REACTIONS } from "../../const/messages";
 import { constructBotReply } from "../replyProcessor";
 import {
   filterKeywords,
@@ -25,6 +14,7 @@ import {
 } from "../../api/mixpanel";
 import { setRecommendedTemplate } from "../../redux/recommendationSlice";
 import { getTemplateDataInToonFormat } from "./toonConvertor";
+import { initialiseClient } from "./client";
 
 const SYSTEM_PROMPT = `You are an AI assistant that helps people find miro templates created by Clyde D'Souza.
 
@@ -76,7 +66,15 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
     throw Error("Missing environment variables");
   }
 
-  const client = new AzureOpenAI({
+  // const client = new AzureOpenAI({
+  //   endpoint,
+  //   apiKey,
+  //   apiVersion,
+  //   deployment,
+  //   dangerouslyAllowBrowser: true,
+  // });
+
+  const client = initialiseClient({
     endpoint,
     apiKey,
     apiVersion,
@@ -99,6 +97,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
   dispatch(setSearchKeywords(keywords));
 
   // Get assistant response
+  console.log(result);
   const assistantMessage = result.choices[0]?.message?.content;
 
   if (!assistantMessage) {
@@ -139,21 +138,18 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
   }
 
   if (!isJsonResponse) {
+    console.log("!isJsonResponse", assistantMessage);
+
     sendBotRespondedEvent({
-      ["Bot response"]: assistantMessage.toString(),
+      ["Bot response"]: assistantMessage,
       ["Search terms"]: userMessage,
       ["Search keywords"]: keywords,
       ["Source"]: CHAT_SOURCE.THIRD_PARTY,
     });
 
     return [
-      constructBotReply(CHAT_TYPE.RECOMMENDATION_THIRD_PARTY, {
-        template: {
-          title: assistantMessageJson.title,
-          description: assistantMessageJson.description,
-          url: assistantMessageJson.url,
-          plainText: assistantMessage.toString(),
-        },
+      constructBotReply(CHAT_TYPE.TEXT, {
+        contents: assistantMessage,
       }),
       constructBotReply(CHAT_TYPE.ACTIONS, {
         reactions: {
@@ -183,6 +179,8 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
     ["Search keywords"]: keywords,
     ["Source"]: CHAT_SOURCE.THIRD_PARTY,
   });
+
+  console.log("FINAL", assistantMessage);
 
   return [
     constructBotReply(CHAT_TYPE.TEXT, {
