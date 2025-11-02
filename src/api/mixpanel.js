@@ -76,6 +76,14 @@ export const sendQuickActionClickedEvent = (props) => {
   }
 };
 
+export const sendAppErrorEvent = (props) => {
+  try {
+    mixpanel.track("App error", { ...props });
+  } catch {
+    undefined;
+  }
+};
+
 export const sendIdleChatEvent = () => {
   try {
     mixpanel.track("Chat idle");

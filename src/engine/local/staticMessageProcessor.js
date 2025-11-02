@@ -1,7 +1,6 @@
 import { sendHelpEvent } from "../../api/mixpanel";
 import { FEEDBACK_FORM_URL } from "../../const/app";
 import {
-  CHAT_FROM,
   CHAT_TYPE,
   REACTIONS,
   IDLE_PRELOADED_MESSAGES,
@@ -60,7 +59,7 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     sendHelpEvent({ ["Help required"]: false });
     dispatch(setHelpRequired(false));
 
-    return { payload: [] };
+    return [];
   }
 
   if (isReactions(userMessage)) {
@@ -77,5 +76,5 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     ];
   }
 
-  return { payload: null };
+  return [];
 };

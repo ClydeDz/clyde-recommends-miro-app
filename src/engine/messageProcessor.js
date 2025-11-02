@@ -1,3 +1,4 @@
+import { sendAppErrorEvent } from "../api/mixpanel";
 import { IDLE_CHAT_CONVERSATIONS } from "../const/messages";
 import { setIsThirdPartyOffline } from "../redux/appSlice";
 import { processBotLocalReplies } from "./local/localProcessor";
@@ -9,7 +10,7 @@ import { processBotThirdPartyReplies } from "./thirdParty/thirdPartyProcessor";
 
 export const processBotReplies = async (userMessage, dispatch, appState) => {
   const { isThirdPartyOffline } = appState;
- 
+
   if (isStaticResponseRequired(userMessage)) {
     return processBotStaticReplies(userMessage, dispatch);
   }
@@ -21,8 +22,9 @@ export const processBotReplies = async (userMessage, dispatch, appState) => {
     return PROCESS_USING_THIRD_PARTY && !isThirdPartyOffline
       ? await processBotThirdPartyReplies(userMessage, dispatch)
       : processBotLocalReplies(userMessage, dispatch);
-  } catch (e) {
+  } catch (error) {
     dispatch(setIsThirdPartyOffline(true));
+    sendAppErrorEvent({ errorMessage: error.toString() });
     return processBotLocalReplies(userMessage, dispatch);
   }
 };

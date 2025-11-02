@@ -9,8 +9,7 @@ import { constructBotReply } from "../replyProcessor";
 import { filterKeywords, removeFillerWords } from "../utils";
 import { pickTemplate, recommendTemplates } from "./templateProcessor";
 
-export const processBotLocalReplies = (userMessage, dispatch) => { 
-
+export const processBotLocalReplies = (userMessage, dispatch) => {
   const messageExcludingFillers = removeFillerWords(userMessage);
   const keywords = filterKeywords(messageExcludingFillers);
   const templates = recommendTemplates(keywords);
