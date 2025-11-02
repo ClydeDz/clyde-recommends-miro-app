@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Message, Avatar, Button } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM } from "../../const/messages";
+import { CHAT_FROM, CHAT_SOURCE } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
 import { sendTemplateVisitedEvent } from "../../api/mixpanel";
 import { useSelector } from "react-redux";
@@ -11,14 +11,15 @@ export const ThirdPartyRecommendation = (props) => {
   const isConsecutive = nextMessage && nextMessage.from == message.from;
 
   const onVisitTemplateBtnClick = () => {
-    // sendTemplateVisitedEvent({
-    //   ["Template id"]: message.template.id,
-    //   ["Template title"]: message.template.title,
-    //   ["Template url"]: message.template.url,
-    //   ["Search terms"]: searchTerms,
-    //   ["Search keywords"]: searchKeywords,
-    // });
-    //window.open(message.template.url, "_blank");
+    sendTemplateVisitedEvent({
+      ["Template id"]: message.template.id,
+      ["Template title"]: message.template.title,
+      ["Template url"]: message.template.url,
+      ["Search terms"]: searchTerms,
+      ["Search keywords"]: searchKeywords,
+      ["Source"]: CHAT_SOURCE.THIRD_PARTY,
+    });
+    window.open(message.template.url, "_blank");
   };
 
   return (
@@ -38,10 +39,11 @@ export const ThirdPartyRecommendation = (props) => {
     >
       <Message.CustomContent>
         <div className="recommendation-template">
+          <img src={`/images/templates/${message.template.id}.jpg`} />
           <h3>{message.template.title}</h3>
           <p>{message.template.description}</p>
           <p>{message.template.url}</p>
-          <p>{message.template.plainText}</p>
+          {/* <p>{message.template.plainText}</p> */}
           <Button onClick={() => onVisitTemplateBtnClick()}>
             Check it out
           </Button>

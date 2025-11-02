@@ -1130,7 +1130,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVM0r32bk=",
     title: "A Wooly Retro",
     url: "https://miro.pxf.io/eK6gnr",
-    // https://miro.com/miroverse/a-wooly-retro/
+    fullUrl: "https://miro.com/miroverse/a-wooly-retro/",
     description:
       "Have a ba-aa-ll during this sprint ritual with A Wooly Retro 🐑",
     tags: [
@@ -1164,7 +1164,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVPS_hTlU=",
     title: "Retro on Mars",
     url: "https://miro.pxf.io/m57ZOq",
-    //https://miro.com/miroverse/retro-on-mars/
+    fullUrl: "https://miro.com/miroverse/retro-on-mars/",
     description:
       "Will humans travel to Mars in the near future? Maybe. Until that happens, we can still very quickly (and virtually) visit Mars for a retrospective with our entire team. Let's get started!",
     tags: [
@@ -1192,7 +1192,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVPW5Mqds=",
     title: "Retro in the UK",
     url: "https://miro.pxf.io/k0mZ0n",
-    // https://miro.com/miroverse/retro-in-the-uk/
+    fullUrl: "https://miro.com/miroverse/retro-in-the-uk/",
     description:
       "For this retrospective, travel with your team to the UK. This retro is divided into four parts. Ready? Let's go!",
     tags: [
@@ -1226,7 +1226,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVOb1cjvU=",
     title: "Retrospective: Aliens",
     url: "https://miro.pxf.io/jrvZW6",
-    // https://miro.com/miroverse/retrospective-aliens-ztxqtqwsdk0hj0th/
+    fullUrl:
+      "https://miro.com/miroverse/retrospective-aliens-ztxqtqwsdk0hj0th/",
     description:
       "We've been fantasizing about aliens 👽 for so long that they've now come back to visit us at the end of our sprint. Are you excited about their visit?",
     tags: [
@@ -1256,7 +1257,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMl28Gao=",
     title: "Effort Reward Matrix",
     url: "https://miro.pxf.io/1rmR5a",
-    // https://miro.com/miroverse/effort-reward-template/
+    fullUrl: "https://miro.com/miroverse/effort-reward-template/",
     description:
       "Everything rewarding requires some amount of effort. However, the amount of effort is not always proportionately equal to the reward. So, it's a good idea to visualize the effort-to-reward matrix so better decisions can be made.",
     tags: [
@@ -1276,7 +1277,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMq1DORw=",
     title: "Making Decisions",
     url: "https://miro.pxf.io/5gVYb9",
-    // https://miro.com/miroverse/making-decisions/
+    fullUrl: "https://miro.com/miroverse/making-decisions/",
     description:
       "In a Zakir Khan interview, he shared that while making a decision, he uses three deciding factors — Will I earn something? Will I learn something? Will I meet new people? — and if one-and-a-half out of three satisfies, then he makes the decision in favor.",
     tags: [
@@ -1309,7 +1310,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMpXyJ3o=",
     title: "Hero Themed Profile Cards",
     url: "https://miro.pxf.io/R5kmGa",
-    // https://miro.com/miroverse/hero-themed-profile-cards/
+    fullUrl: "https://miro.com/miroverse/hero-themed-profile-cards/",
     description:
       "Are you looking for fun 'get to know me' profile cards for your next meeting? Here's hero-themed profile cards that you can edit to suit your requirements.",
     tags: [
@@ -1331,7 +1332,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVO619vVs=",
     title: "Personal Development: Flight to Success",
     url: "https://miro.pxf.io/XYVOm4",
-    // https://miro.com/miroverse/personal-development-flight-to-success/
+    fullUrl:
+      "https://miro.com/miroverse/personal-development-flight-to-success/",
     description:
       "Focusing on your career and personal development is super important. Use this template to visualize the top 4 career goals and what items you might want to check off to complete each goal. ",
     tags: [
@@ -1361,7 +1363,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMpl7-0k=",
     title: "Resting Up",
     url: "https://miro.pxf.io/LXQ4KL",
-    //https://miro.com/miroverse/resting-up/
+    fullUrl: "https://miro.com/miroverse/resting-up/",
     description:
       "Use this Miro retrospective board to dive into a rest-themed retro.",
     tags: [
@@ -1388,7 +1390,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMw2ffU8=",
     title: "What Would They Do? Your Personal Workbook",
     url: "https://miro.pxf.io/VmGBxa",
-    //https://miro.com/miroverse/what-would-they-do-your-personal/
+    fullUrl: "https://miro.com/miroverse/what-would-they-do-your-personal/",
     description:
       "When one is new to the industry, fresh out of Uni, everything can feel quite overwhelming. In some situations, one might even not know what to do, or even how to present themselves. This is when having a framework can really help your career growth. A framework for leveling up in your career.",
     tags: [
@@ -1415,7 +1417,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMyWBK04=",
     title: "AI Tell Me a Story Jigsaw Puzzle",
     url: "https://miro.pxf.io/Jzx4Kr",
-    // https://miro.com/miroverse/ai-tell-me-a-story-jigsaw-puzzle/
+    fullUrl: "https://miro.com/miroverse/ai-tell-me-a-story-jigsaw-puzzle/",
     description:
       "In this Miro board, we'll play around with a book-themed jigsaw puzzle and see if we can put it together. The puzzle space is on the left and the reference image is on the right.",
     tags: [
@@ -1434,7 +1436,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVPELXwAw=",
     title: "Secret Santa",
     url: "https://miro.pxf.io/Nkr4Kb",
-    // https://miro.com/miroverse/secret-santa/
+    fullUrl: "https://miro.com/miroverse/secret-santa/",
     description:
       "With Miro, we can continue the tradition of Secret Santa and leave virtual presents for one another under the Christmas tree.",
     tags: [
@@ -1457,7 +1459,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMPm7QnM=",
     title: "Eye to Eye Retrospective",
     url: "https://miro.pxf.io/damnOq",
-    //https://miro.com/miroverse/eye-to-eye-retrospective/
+    fullUrl: "https://miro.com/miroverse/eye-to-eye-retrospective/",
     description:
       "Retrospective is a time to reflect on the eyes and lows. Bring out your clear lenses and let's see things differently with this retrospective template. ",
     tags: [
@@ -1483,7 +1485,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVMJf_TrA=",
     title: "Memories Scrapboard",
     url: "https://miro.pxf.io/q47Zzj",
-    //https://miro.com/miroverse/memories-scrapboard/
+    fullUrl: "https://miro.com/miroverse/memories-scrapboard/",
     description:
       "This is a scrapboard. Instead of writing your messages and sticking pictures in a book of blank pages, you'll put all of that in this Memories Scrapboard.",
     tags: [
@@ -1504,7 +1506,7 @@ export const MIRO_TEMPLATES = [
     id: "o9J_l6Ot8hk=",
     title: "Hand-Drawn Lean Canvas",
     url: "https://miro.pxf.io/9gXOL0",
-    // https://miro.com/miroverse/hand-drawn-lean-canvas/
+    fullUrl: "https://miro.com/miroverse/hand-drawn-lean-canvas/",
     description:
       "Lean Canvas is a 1-page business plan template created by Ash Maurya that helps you deconstruct your idea into its key assumptions, now on Miro.",
     tags: [

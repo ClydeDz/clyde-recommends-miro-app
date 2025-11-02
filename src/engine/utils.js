@@ -22,3 +22,7 @@ export const isJsonString = (str) => {
 export const isEqualCaseInsensitive = (arg1, arg2) => {
   return arg1.toLowerCase() === arg2.toLowerCase();
 };
+
+export const fixTemplateId = (templateId) => {
+  return templateId.slice(-1) === "=" ? templateId : `${templateId}=`;
+};

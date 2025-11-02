@@ -6,7 +6,7 @@ import {
 } from "./local/staticMessageProcessor";
 import { processBotThirdPartyReplies } from "./thirdParty/thirdPartyProcessor";
 
-const PROCESS_USING_THIRD_PARTY = false;
+const PROCESS_USING_THIRD_PARTY = true;
 
 export const processBotReplies = async (userMessage, dispatch) => {
   if (isStaticResponseRequired(userMessage)) {

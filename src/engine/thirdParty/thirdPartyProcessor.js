@@ -11,7 +11,12 @@ import {
   REACTIONS,
 } from "../../const/messages";
 import { constructBotReply } from "../replyProcessor";
-import { filterKeywords, isJsonString, removeFillerWords } from "../utils";
+import {
+  filterKeywords,
+  fixTemplateId,
+  isJsonString,
+  removeFillerWords,
+} from "../utils";
 import { setSearchKeywords } from "../../redux/searchSlice";
 import {
   sendBotRespondedEvent,
@@ -19,17 +24,14 @@ import {
   sendTemplateNotFoundEvent,
 } from "../../api/mixpanel";
 import { setRecommendedTemplate } from "../../redux/recommendationSlice";
+import { getTemplateDataInToonFormat } from "./toonConvertor";
 
 const SYSTEM_PROMPT = `You are an AI assistant that helps people find miro templates created by Clyde D'Souza.
 
-You are to analyse these web pages and only respond with information that matches with the contents in the web pages:
-- https://miro.com/templates/gratitude-journal-template/
-- https://miro.com/templates/a-halloween-quiz-template/
-- https://miro.com/templates/retrospective-in-the-island-of-golocans/
-- https://miro.com/templates/halloween-retro/
-- https://miro.com/templates/your-spooky-name-template/
+You are to analyse the miro template catalogue below and only respond with information that matches with the contents in the web pages:
+${getTemplateDataInToonFormat()}
 
-also look at the profile page and the templates linked from this profile page:
+Also look at the profile page and the templates linked from this profile page:
 - https://miro.com/miroverse/profile/clyde-dsouza/
 
 STRICT RULES:
@@ -40,9 +42,10 @@ STRICT RULES:
 5. Maximum response length: 100 tokens
 When a user asks for a template / template recommendation, respond in this JSON format:
 {
-  "title": "The Miro Template Title",
+  "title": "The Miro template title that should match the miro template catalogue",
   "description": "A brief 1-sentence description (max 20 words)",
-  "url": "The template URL"
+  "url": "The template URL from the miro template catalogue ",
+  "id": "The unique ID of the template from the miro template catalogue including the = symbol at the end"
 }
 
 If they're not asking directly for a recommendation specifically, respond naturally like a conversation.
@@ -70,7 +73,6 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
   //   const MAX_INPUT_LENGTH = 500; // characters
 
   if (!endpoint || !apiKey || !deployment) {
-    console.log("CATCH Missing environment variables");
     throw Error("Missing environment variables");
   }
 
@@ -165,7 +167,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
 
   dispatch(
     setRecommendedTemplate({
-      id: assistantMessageJson.url, //templatePicked.id,
+      id: fixTemplateId(assistantMessageJson.id),
       title: assistantMessageJson.title,
       url: assistantMessageJson.url,
       description: assistantMessageJson.description,
@@ -173,7 +175,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
   );
 
   sendTemplateFoundEvent({
-    ["Template id"]: assistantMessageJson.url, //templatePicked.id,
+    ["Template id"]: fixTemplateId(assistantMessageJson.id),
     ["Template title"]: assistantMessageJson.title,
     ["Template url"]: assistantMessageJson.url,
     ["Template description"]: assistantMessageJson.description,
@@ -188,6 +190,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
     }),
     constructBotReply(CHAT_TYPE.RECOMMENDATION_THIRD_PARTY, {
       template: {
+        id: fixTemplateId(assistantMessageJson.id),
         title: assistantMessageJson.title,
         description: assistantMessageJson.description,
         url: assistantMessageJson.url,

@@ -2,23 +2,25 @@
   "name": "clyde-recommends",
   "version": "0.2.1",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "@azure/openai": "^1.0.0-beta.12",
     "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@reduxjs/toolkit": "^2.2.6",
+    "@toon-format/toon": "^0.7.0",
     "mirotone": "5.3.0",
     "mixpanel-browser": "^2.53.0",
+    "openai": "^4.77.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-idle-timer": "^5.7.2",
     "react-redux": "^9.1.2",
-    "stopword": "^3.0.1",
-    "@azure/openai": "^1.0.0-beta.12",
-    "openai": "^4.77.0"
+    "stopword": "^3.0.1"
   },
   "devDependencies": {
     "@clydedsouza/netlify-plugin-github-deploy-status": "^0.0.5",
