@@ -186,13 +186,13 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
     constructBotReply(CHAT_TYPE.TEXT, {
       contents: `I've picked this template for you.`,
     }),
-    constructBotReply(CHAT_TYPE.RECOMMENDATION_THIRD_PARTY, {
+    constructBotReply(CHAT_TYPE.RECOMMENDATION, {
       template: {
         id: fixTemplateId(assistantMessageJson.id),
         title: assistantMessageJson.title,
         description: assistantMessageJson.description,
         url: assistantMessageJson.url,
-        plainText: assistantMessage.toString(),
+        source: CHAT_SOURCE.THIRD_PARTY,
       },
     }),
     constructBotReply(CHAT_TYPE.ACTIONS, {

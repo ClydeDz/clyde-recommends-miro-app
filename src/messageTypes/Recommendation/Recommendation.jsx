@@ -17,7 +17,7 @@ export const Recommendation = (props) => {
       ["Template url"]: message.template.url,
       ["Search terms"]: searchTerms,
       ["Search keywords"]: searchKeywords,
-      ["Source"]: CHAT_SOURCE.LOCAL,
+      ["Source"]: message.template.source,
     });
     window.open(message.template.url, "_blank");
   };

@@ -4,7 +4,6 @@ import { BOT_NAME } from "./app";
 export const CHAT_TYPE = {
   TEXT: "text",
   RECOMMENDATION: "recommendation",
-  RECOMMENDATION_THIRD_PARTY: "thirdPartyRecommendation",
   ACTIONS: "actions",
   SPACER: "spacer",
 };

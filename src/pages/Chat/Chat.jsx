@@ -25,7 +25,6 @@ import {
   sendFeedbackEvent,
   sendQuickActionClickedEvent,
 } from "../../api/mixpanel";
-import { ThirdPartyRecommendation } from "../../messageTypes/Recommendation/ThirdPartyRecommendation";
 
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
@@ -144,19 +143,6 @@ export const Chat = (props) => {
                   ),
                   conversation.type === CHAT_TYPE.RECOMMENDATION && (
                     <Recommendation
-                      message={conversation}
-                      index={index}
-                      key={index}
-                      nextMessage={
-                        conversations[index + 1]
-                          ? conversations[index + 1]
-                          : undefined
-                      }
-                    />
-                  ),
-                  conversation.type ===
-                    CHAT_TYPE.RECOMMENDATION_THIRD_PARTY && (
-                    <ThirdPartyRecommendation
                       message={conversation}
                       index={index}
                       key={index}

@@ -62,7 +62,7 @@ export const processBotLocalReplies = (userMessage, dispatch) => {
       contents: `I've picked this template for you.`,
     }),
     constructBotReply(CHAT_TYPE.RECOMMENDATION, {
-      template: { ...templatePicked },
+      template: { ...templatePicked, source: CHAT_SOURCE.LOCAL },
     }),
     constructBotReply(CHAT_TYPE.ACTIONS, {
       reactions: {
