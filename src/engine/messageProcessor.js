@@ -9,7 +9,7 @@ import { processBotThirdPartyReplies } from "./thirdParty/thirdPartyProcessor";
 
 export const processBotReplies = async (userMessage, dispatch, appState) => {
   const { isThirdPartyOffline } = appState;
-
+ 
   if (isStaticResponseRequired(userMessage)) {
     return processBotStaticReplies(userMessage, dispatch);
   }

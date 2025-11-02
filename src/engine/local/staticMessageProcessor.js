@@ -8,6 +8,7 @@ import {
   PRECONFIGURED_COMMANDS,
 } from "../../const/messages";
 import { setHelpRequired } from "../../redux/appSlice";
+import { constructBotReply } from "../replyProcessor";
 import { isEqualCaseInsensitive } from "../utils";
 
 const isHelpRequiredYes = (userMessage) => {
@@ -41,26 +42,18 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     sendHelpEvent({ ["Help required"]: true });
     dispatch(setHelpRequired(true));
 
-    return {
-      payload: [
-        {
-          type: CHAT_TYPE.TEXT,
-          from: CHAT_FROM.BOT,
-          timestamp: new Date().toLocaleString(),
-          contents: `Type in keywords of what Miro template you're looking for. E.g. retrospective`,
-        },
-        {
-          type: CHAT_TYPE.ACTIONS,
-          from: CHAT_FROM.BOT,
-          timestamp: new Date().toLocaleString(),
-          actions: [
-            "Give me a retrospective template",
-            "Recommend an icebreaker",
-            "I want to collect feedback",
-          ],
-        },
-      ],
-    };
+    return [
+      constructBotReply(CHAT_TYPE.TEXT, {
+        contents: `Type in keywords of what Miro template you're looking for. E.g. retrospective`,
+      }),
+      constructBotReply(CHAT_TYPE.ACTIONS, {
+        actions: [
+          "Give me a retrospective template",
+          "Recommend an icebreaker",
+          "I want to collect feedback",
+        ],
+      }),
+    ];
   }
 
   if (isHelpRequiredNo(userMessage)) {
@@ -71,25 +64,17 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
   }
 
   if (isReactions(userMessage)) {
-    return {
-      payload: [
-        {
-          type: CHAT_TYPE.TEXT,
-          from: CHAT_FROM.BOT,
-          timestamp: new Date().toLocaleString(),
-          contents: `Thanks for your feedback. Please consider clicking on the link below to provide me with some detailed feedback.`,
+    return [
+      constructBotReply(CHAT_TYPE.TEXT, {
+        contents: `Thanks for your feedback. Please consider clicking on the link below to provide me with some detailed feedback.`,
+      }),
+      constructBotReply(CHAT_TYPE.ACTIONS, {
+        redirect: {
+          url: FEEDBACK_FORM_URL,
+          displayText: "I'd love to hear from you",
         },
-        {
-          type: CHAT_TYPE.ACTIONS,
-          from: CHAT_FROM.BOT,
-          timestamp: new Date().toLocaleString(),
-          redirect: {
-            url: FEEDBACK_FORM_URL,
-            displayText: "I'd love to hear from you",
-          },
-        },
-      ],
-    };
+      }),
+    ];
   }
 
   return { payload: null };

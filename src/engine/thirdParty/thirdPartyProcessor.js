@@ -47,8 +47,7 @@ If you can't find a suitable template, respond: "I can't find this information i
 
 const messages = [{ role: "system", content: SYSTEM_PROMPT }];
 
-export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
-  console.log("THIRD PARTY");
+export const processBotThirdPartyReplies = async (userMessage, dispatch) => { 
 
   const endpoint = import.meta.env.VITE_AZURE_OPENAI_ENDPOINT;
   const apiKey = import.meta.env.VITE_AZURE_OPENAI_API_KEY;
@@ -96,8 +95,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
   const keywords = filterKeywords(messageExcludingFillers);
   dispatch(setSearchKeywords(keywords));
 
-  // Get assistant response
-  console.log(result);
+  // Get assistant response 
   const assistantMessage = result.choices[0]?.message?.content;
 
   if (!assistantMessage) {
@@ -123,22 +121,14 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
 
   const isJsonResponse = isJsonString(assistantMessage);
   const assistantMessageJson = isJsonResponse && JSON.parse(assistantMessage);
-
-  console.log(
-    "assistantMessage",
-    assistantMessage,
-    isJsonResponse,
-    assistantMessageJson
-  );
-
+ 
   messages.push({ role: "assistant", content: assistantMessage });
 
   if (messages.length > 11) {
     messages.splice(1, messages.length - 11);
   }
 
-  if (!isJsonResponse) {
-    console.log("!isJsonResponse", assistantMessage);
+  if (!isJsonResponse) { 
 
     sendBotRespondedEvent({
       ["Bot response"]: assistantMessage,
@@ -179,8 +169,7 @@ export const processBotThirdPartyReplies = async (userMessage, dispatch) => {
     ["Search keywords"]: keywords,
     ["Source"]: CHAT_SOURCE.THIRD_PARTY,
   });
-
-  console.log("FINAL", assistantMessage);
+ 
 
   return [
     constructBotReply(CHAT_TYPE.TEXT, {

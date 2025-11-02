@@ -29,7 +29,9 @@ import {
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
-  const { isBotLoading, feedbackGiven, isThirdPartyOffline } = useSelector((state) => state.app);
+  const { isBotLoading, feedbackGiven, isThirdPartyOffline } = useSelector(
+    (state) => state.app
+  );
   const recommendedTemplate = useSelector(
     (state) => state.recommendation.recommendedTemplate
   );
@@ -49,7 +51,9 @@ export const Chat = (props) => {
       { ...constructUserReply(userMessage) },
     ]);
 
-    const botReplies = await processBotReplies(userMessage, dispatch, {isThirdPartyOffline});
+    const botReplies = await processBotReplies(userMessage, dispatch, {
+      isThirdPartyOffline,
+    });
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -86,7 +90,9 @@ export const Chat = (props) => {
 
     if (feedbackGiven) return;
 
-    const botReplies = await processBotReplies(reactionClicked, dispatch);
+    const botReplies = await processBotReplies(reactionClicked, dispatch, {
+      isThirdPartyOffline,
+    });
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();

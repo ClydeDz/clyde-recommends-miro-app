@@ -8,7 +8,7 @@ export const processRepliesWithDelay = async (
   setConversation,
   dispatch
 ) => {
-  await delay(500);
+  await delay(500); 
 
   for (let index = 0; index < botReplies.length; index++) {
     const reply = botReplies[index];
@@ -16,7 +16,7 @@ export const processRepliesWithDelay = async (
     dispatch(setIsBotLoading(true));
     await delay(index * 500);
     await delay(200);
-
+ 
     setConversation((oldArray) => [...oldArray, { ...reply }]);
     dispatch(setIsBotLoading(false));
   }
