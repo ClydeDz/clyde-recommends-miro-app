@@ -3,6 +3,46 @@
 
 export const MIRO_TEMPLATES = [
   {
+    id: "uXjVJxatUbQ=",
+    title: "Movie Marathon 2025",
+    url: "https://miro.pxf.io/ra5bVy",
+    fullUrl: "https://miro.com/templates/movie-marathon-2025/",
+    description:
+      "Here's a new way to visualize your 2025 calendar! Now you have every reason to look forward to each month of the next year. Grab yourself some popcorn because 2025 is going to be a movie marathon.",
+    tags: [
+      "2025",
+      "calendar",
+      "miro calendar",
+      "a4",
+      "movies",
+      "movie",
+      "cinema",
+      "marathon",
+      "movie marathon",
+      "popcorn",
+    ],
+  },
+  {
+    id: "uXjVJxayCQM=",
+    title: "Application Onboarding",
+    url: "https://miro.pxf.io/POMK1R",
+    fullUrl: "https://miro.com/templates/application-onboarding-template/",
+    description:
+      "The Application OnboardingTemplate is designed to help new engineers onboard a new application as well as the team that supports this application. This board aims to make everyone feel like an expert.",
+    tags: [
+      "apps",
+      "application",
+      "onboarding",
+      "new hire",
+      "new starter",
+      "app onboarding",
+      "miro ai",
+      "ai",
+      "engineers",
+      "engineering",
+    ],
+  },
+  {
     id: "uXjVKTtrd2w=",
     title: "Gratitude Journal",
     url: "https://miro.pxf.io/1r4gxD",
@@ -562,7 +602,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNBp_G8o=",
     title: "Mirocooked Icebreaker",
     url: "https://miro.pxf.io/EK3J0P",
-    // https://miro.com/miroverse/mirocooked-icebreaker-template/
+    fullUrl: "https://miro.com/miroverse/mirocooked-icebreaker-template/",
     description:
       "Your challenge for today is to help these two chefs in the kitchen and put together a delicious pizza for our guests. ",
     tags: [
@@ -586,7 +626,7 @@ export const MIRO_TEMPLATES = [
     id: "o9J_lqtgU9c=",
     title: "Bulls Eye Feedback",
     url: "https://miro.pxf.io/9gXOVW",
-    // https://miro.com/miroverse/bulls-eye-feedback/
+    fullUrl: "https://miro.com/miroverse/bulls-eye-feedback/",
     description:
       "Include Bulls Eye Feedback in any of your existing workshop Miro boards to get your team's feedback on your workshop by asking them to place one of the custom made darts anywhere in the target.",
     tags: [
@@ -607,7 +647,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNENHsLg=",
     title: "What's Your Cupid Name?",
     url: "https://miro.pxf.io/21AMRz",
-    // https://miro.com/miroverse/whats-your-cupid-name-template/
+    fullUrl: "https://miro.com/miroverse/whats-your-cupid-name-template/",
     description:
       "In this Valentine's Day-themed icebreaker, get your participants to create their cupid name. You do this by combining a sweet adjective corresponding to the first letter of your name with a cute romantic nickname corresponding to the month you were born.",
     tags: [
@@ -677,7 +717,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNEKNxnE=",
     title: "Cupid Swipe Retro",
     url: "https://miro.pxf.io/y279ZV",
-    //https://miro.com/miroverse/cupid-swipe-retro-template/
+    fullUrl: "https://miro.com/miroverse/cupid-swipe-retro-template/",
     description:
       "This Valentine's Day, indulge in a dating app-themed retrospective board. 💖",
     tags: [
@@ -717,7 +757,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNGV8jhE=",
     title: "Love It or Hate It? Cupid Swipe Icebreaker",
     url: "https://miro.pxf.io/9gXOeW",
-    // https://miro.com/miroverse/love-hate-cupid-swipe-icebreaker-template/
+    fullUrl:
+      "https://miro.com/miroverse/love-hate-cupid-swipe-icebreaker-template/",
     description:
       "A dating app-style icebreaker to get to know what your participants like and dislike and to get the conversations started. Use this in February as a Valentine's Day icebreaker or just any other time of the year for some giggles. ",
     tags: [
@@ -748,7 +789,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNE24j1g=",
     title: "A Sense of Appreciation",
     url: "https://miro.pxf.io/m57Z4e",
-    // https://miro.com/miroverse/sense-of-appreciation-template/
+    fullUrl: "https://miro.com/miroverse/sense-of-appreciation-template/",
     description:
       "With the help of some Japanese concepts, let's learn to appreciate the different aspects of life in this self-reflection board.",
     tags: [
@@ -772,7 +813,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNIeY7hc=",
     title: "Lean Coffee Cafe",
     url: "https://miro.pxf.io/VmGB4A",
-    //https://miro.com/miroverse/lean-coffee-cafe-template/
+    fullUrl: "https://miro.com/miroverse/lean-coffee-cafe-template/",
     description:
       "Welcome to the Lean Coffee Cafe! Today, we have a caffeine-infused three-course menu — we start with items to discuss, then we'll proceed to items we're currently discussing, and finally, items that we've discussed. ☕",
     tags: [
@@ -873,7 +914,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNHSP1OQ=",
     title: "Frosty Firestarter's",
     url: "https://miro.pxf.io/ZQZBrq",
-    // https://miro.com/miroverse/frosty-firestarters/
+    fullUrl: "https://miro.com/miroverse/frosty-firestarters/",
     description:
       "Thanks for cloning this Frosty Firestarter's template. This is a simple icebreaker template which contains heaps of dragon-themed prompt cards in the center of the deck. 🐉",
     tags: [
@@ -893,7 +934,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNJA2FJo=",
     title: "Hang Those Christmas Stockings",
     url: "https://miro.pxf.io/oq70nb",
-    //https://miro.com/miroverse/hang-those-christmas-stockings-template/
+    fullUrl:
+      "https://miro.com/miroverse/hang-those-christmas-stockings-template/",
     description:
       "Let's keep the Christmas stocking tradition alive virtually using this simple Miro board. Wondering how? Follow along! 🎄🎅🧦",
     tags: [
@@ -914,7 +956,8 @@ export const MIRO_TEMPLATES = [
     id: "o9J_lCs6DkM=",
     title: "Retrospective in the Island of Golocans",
     url: "https://miro.pxf.io/xk1NMk",
-    // https://miro.com/miroverse/retrospective-in-the-island-of-golocans/
+    fullUrl:
+      "https://miro.com/miroverse/retrospective-in-the-island-of-golocans/",
     description:
       "When performing a retrospective on the Island of Golocans, remember to cover all four directions. Have a pleasant time exploring this island!",
     tags: [
@@ -951,7 +994,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNS0uLGQ=",
     title: "Would You Rather? Shopping Edition",
     url: "https://miro.pxf.io/q47Z4j",
-    // https://miro.com/miroverse/would-you-rather-shopping-edition-template/
+    fullUrl:
+      "https://miro.com/miroverse/would-you-rather-shopping-edition-template/",
     description:
       "To play a game of 'Would You Rather,' gather a group of participants and take turns presenting each other with a choice between two hypothetical options, often amusing, creating interesting dilemmas. Participants must choose a side using and might also go about explaining their choice if they'd like.",
     tags: [
@@ -974,7 +1018,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNTaX6tw=",
     title: "Black Friday Bingo Cards",
     url: "https://miro.pxf.io/zN7rxe",
-    //https://miro.com/miroverse/black-friday-bingo-cards-template/
+    fullUrl: "https://miro.com/miroverse/black-friday-bingo-cards-template/",
     description:
       "To play, choose a bingo card set and then ask each other if you've ever had these shopping experiences. Each person gets a card from the selected set. If you have had the shopping experience, mark the square with the marker provided.",
     tags: [
@@ -993,7 +1037,7 @@ export const MIRO_TEMPLATES = [
     id: "o9J_l9J6AHY=",
     title: "The Writing Process",
     url: "https://miro.pxf.io/rQ7OQ5",
-    // https://miro.com/miroverse/the-writing-process/
+    fullUrl: "https://miro.com/miroverse/the-writing-process/",
     description:
       "The writing process can be overwhelming at times. But it doesn't always have to be. To make your life smooth, I've created this all-in-one template that you can copy and fill up.",
     tags: [
@@ -1012,7 +1056,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNSuta38=",
     title: "Word Search Shopping Edition",
     url: "https://miro.pxf.io/rQ7On5",
-    // https://miro.com/miroverse/word-search-shopping-edition-template/
+    fullUrl:
+      "https://miro.com/miroverse/word-search-shopping-edition-template/",
     description:
       "Locate below listed words hidden within this grid of letters. These words can be arranged horizontally, vertically, or diagonally, in any direction.",
     tags: [
@@ -1041,7 +1086,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNT6LVfA=",
     title: "No Regrets Calendar 2024",
     url: "https://miro.pxf.io/EK3JEe",
-    //https://miro.com/miroverse/no-regrets-calendar-2024/
+    fullUrl: "https://miro.com/miroverse/no-regrets-calendar-2024/",
     description:
       "2024 is just around the corner and if there's any resolution to be made, it would be to live your life with no regrets. Whether its planning a vacation, learning a new skill, trying a different activity or signing up for an adventure of a lifetime—do it this year. And what better way to visualize the year than to do it in Miro.",
     tags: [
