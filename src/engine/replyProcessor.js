@@ -1,3 +1,4 @@
+import { CHAT_FROM, CHAT_TYPE } from "../const/messages";
 import { setIsBotLoading } from "../redux/appSlice";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -21,4 +22,22 @@ export const processRepliesWithDelay = async (
   }
 
   dispatch(setIsBotLoading(false));
+};
+
+export const constructBotReply = (type, payload) => {
+  return {
+    type,
+    from: CHAT_FROM.BOT,
+    timestamp: new Date().toLocaleString(),
+    ...payload,
+  };
+};
+
+export const constructUserReply = (userMessage) => {
+  return {
+    type: CHAT_TYPE.TEXT,
+    from: CHAT_FROM.USER,
+    timestamp: new Date().toLocaleString(),
+    contents: userMessage,
+  };
 };

@@ -36,6 +36,14 @@ export const sendTemplateFoundEvent = (props) => {
   }
 };
 
+export const sendBotRespondedEvent = (props) => {
+  try {
+    mixpanel.track("Bot responded", { ...props });
+  } catch {
+    undefined;
+  }
+};
+
 export const sendTemplateNotFoundEvent = (props) => {
   try {
     mixpanel.track("Template not found", { ...props });

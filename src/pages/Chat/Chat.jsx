@@ -7,10 +7,7 @@ import {
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
 import { CHAT_TYPE } from "../../const/messages";
-import {
-  processBotReplies,
-  processUserMessage,
-} from "../../engine/messageProcessor";
+import { processBotReplies } from "../../engine/messageProcessor";
 import { Text } from "../../messageTypes/Text/Text";
 import { Recommendation } from "../../messageTypes/Recommendation/Recommendation";
 import { BOT_NAME, FEEDBACK_FORM_URL, ISSUE_URL } from "../../const/app";
@@ -18,13 +15,17 @@ import { Actions } from "../../messageTypes/Actions/Actions";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
-import { processRepliesWithDelay } from "../../engine/replyProcessor";
+import {
+  constructUserReply,
+  processRepliesWithDelay,
+} from "../../engine/replyProcessor";
 import { setFeedbackGiven, setIsBotLoading } from "../../redux/appSlice";
 import {
   sendExternalLinkClickedEvent,
   sendFeedbackEvent,
   sendQuickActionClickedEvent,
 } from "../../api/mixpanel";
+import { ThirdPartyRecommendation } from "../../messageTypes/Recommendation/ThirdPartyRecommendation";
 
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
@@ -46,10 +47,10 @@ export const Chat = (props) => {
 
     setConversations((oldArray) => [
       ...oldArray,
-      { ...processUserMessage(userMessage) },
+      { ...constructUserReply(userMessage) },
     ]);
 
-    const botReplies = processBotReplies(userMessage, dispatch);
+    const botReplies = await processBotReplies(userMessage, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -86,7 +87,7 @@ export const Chat = (props) => {
 
     if (feedbackGiven) return;
 
-    const botReplies = processBotReplies(reactionClicked, dispatch);
+    const botReplies = await processBotReplies(reactionClicked, dispatch);
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -143,6 +144,19 @@ export const Chat = (props) => {
                   ),
                   conversation.type === CHAT_TYPE.RECOMMENDATION && (
                     <Recommendation
+                      message={conversation}
+                      index={index}
+                      key={index}
+                      nextMessage={
+                        conversations[index + 1]
+                          ? conversations[index + 1]
+                          : undefined
+                      }
+                    />
+                  ),
+                  conversation.type ===
+                    CHAT_TYPE.RECOMMENDATION_THIRD_PARTY && (
+                    <ThirdPartyRecommendation
                       message={conversation}
                       index={index}
                       key={index}

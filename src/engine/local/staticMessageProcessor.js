@@ -1,28 +1,47 @@
-import { sendHelpEvent } from "../api/mixpanel";
-import { FEEDBACK_FORM_URL } from "../const/app";
+import { sendHelpEvent } from "../../api/mixpanel";
+import { FEEDBACK_FORM_URL } from "../../const/app";
 import {
   CHAT_FROM,
   CHAT_TYPE,
   REACTIONS,
   IDLE_PRELOADED_MESSAGES,
   PRECONFIGURED_COMMANDS,
-} from "../const/messages";
-import { setHelpRequired } from "../redux/appSlice";
+} from "../../const/messages";
+import { setHelpRequired } from "../../redux/appSlice";
+import { isEqualCaseInsensitive } from "../utils";
 
-const isEqualCaseInsensitive = (arg1, arg2) => {
-  return arg1.toLowerCase() === arg2.toLowerCase();
+const isHelpRequiredYes = (userMessage) => {
+  return (
+    isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_YES) ||
+    isEqualCaseInsensitive(userMessage, PRECONFIGURED_COMMANDS.HELP)
+  );
+};
+
+const isHelpRequiredNo = (userMessage) => {
+  return isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_NO);
+};
+
+const isReactions = (userMessage) => {
+  return (
+    isEqualCaseInsensitive(userMessage, REACTIONS.LIKE) ||
+    isEqualCaseInsensitive(userMessage, REACTIONS.DISLIKE)
+  );
+};
+
+export const isStaticResponseRequired = (userMessage) => {
+  return (
+    isHelpRequiredYes(userMessage) ||
+    isHelpRequiredNo(userMessage) ||
+    isReactions(userMessage)
+  );
 };
 
 export const processBotStaticReplies = (userMessage, dispatch) => {
-  if (
-    isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_YES) ||
-    isEqualCaseInsensitive(userMessage, PRECONFIGURED_COMMANDS.HELP)
-  ) {
+  if (isHelpRequiredYes(userMessage)) {
     sendHelpEvent({ ["Help required"]: true });
     dispatch(setHelpRequired(true));
 
     return {
-      exit: true,
       payload: [
         {
           type: CHAT_TYPE.TEXT,
@@ -44,19 +63,15 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     };
   }
 
-  if (isEqualCaseInsensitive(userMessage, IDLE_PRELOADED_MESSAGES.HELP_NO)) {
+  if (isHelpRequiredNo(userMessage)) {
     sendHelpEvent({ ["Help required"]: false });
     dispatch(setHelpRequired(false));
 
-    return { exit: true, payload: [] };
+    return { payload: [] };
   }
 
-  if (
-    isEqualCaseInsensitive(userMessage, REACTIONS.LIKE) ||
-    isEqualCaseInsensitive(userMessage, REACTIONS.DISLIKE)
-  ) {
+  if (isReactions(userMessage)) {
     return {
-      exit: true,
       payload: [
         {
           type: CHAT_TYPE.TEXT,
@@ -77,5 +92,5 @@ export const processBotStaticReplies = (userMessage, dispatch) => {
     };
   }
 
-  return { exit: false, payload: null };
+  return { payload: null };
 };
