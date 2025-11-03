@@ -46,6 +46,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKTtrd2w=",
     title: "Gratitude Journal",
     url: "https://miro.pxf.io/1r4gxD",
+    fullUrl: "https://miro.com/miroverse/gratitude-journal-template/",
     description: "Start giving thanks and keeping a gratitude journal in Miro.",
     tags: [
       "Gratitude",
@@ -75,6 +76,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKOwaHhU=",
     title: "A Hive-ly Retrospective!",
     url: "https://miro.pxf.io/B04GqL",
+    fullUrl: "https://miro.com/templates/hively-retrospective-template/",
     description:
       "Commemorate World Bee Day with this retrospective board, adorned with bee-themed decorations serving as a hive of reflection.",
     tags: [
@@ -112,6 +114,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKOxk2Ak=",
     title: "Star Wars Puzzle Time",
     url: "https://miro.pxf.io/NkrKMN",
+    fullUrl: "https://miro.com/templates/star-wars-puzzle-time-template/",
     description:
       "Embark on an epic journey through the galaxy with these Star Wars-themed jigsaw puzzles! 4 puzzles to mark the fourth! ",
     tags: [
@@ -146,6 +149,7 @@ export const MIRO_TEMPLATES = [
     id: "o9J_lHSC6A0=",
     title: "The 4-Step Retrospective",
     url: "https://miro.pxf.io/PyP0Mq",
+    fullUrl: "https://miro.com/miroverse/the-4-step-retrospective/",
     description:
       "The 4-step retrospective board is intended to quickly add a simple retrospective template for your retro sessions. ",
     tags: [
@@ -183,6 +187,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKVRJS1w=",
     title: "Circular Conundrums: Easy Maze Marvels",
     url: "https://miro.pxf.io/q47naq",
+    fullUrl:
+      "https://miro.com/templates/circular-conundrums-easy-maze-marvels-template/",
     description:
       "Side step into the land of Maze Marvels but only this time, we're dealing with circular mazes in Miro.",
     tags: [
@@ -213,6 +219,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKVWEo3w=",
     title: "Hexa-Maze Magic: Easy Maze Escapades",
     url: "https://miro.pxf.io/Qy5OM9",
+    fullUrl:
+      "https://miro.com/templates/hexamaze-magic-easy-maze-escapades-template/",
     description:
       "Side step into the land of Maze Marvels but only this time, we're dealing with hexagonal mazes in Miro.",
     tags: [
@@ -245,6 +253,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKWQkBQY=",
     title: "Maze Marvels: Navigate the Challenge!",
     url: "https://miro.pxf.io/ZQZdM0",
+    fullUrl:
+      "https://miro.com/miroverse/maze-marvels-navigate-challenge-template/",
     description:
       "The next step of Maze Marvels — Navigate the Challenge — is slightly intermediate-level maze puzzles.",
     tags: [
@@ -276,6 +286,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKWQUzKI=",
     title: "Maze Marvels: Dare to Navigate the Depths!",
     url: "https://miro.pxf.io/0ZeJVY",
+    fullUrl:
+      "https://miro.com/templates/maze-marvels-dare-navigate-depths-template/",
     description:
       "The next step of Maze Marvels — Dare to Navigate the Depths — is hard-level maze puzzles.",
     tags: [
@@ -309,6 +321,8 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKWQriEQ=",
     title: "Maze Marvels: Fun and Simple Paths to Solve!",
     url: "https://miro.pxf.io/eK64L6",
+    fullUrl:
+      "https://miro.com/miroverse/maze-marvels-fun-simple-paths-solve-template/",
     description:
       "This is the first of Maze Marvels — an easy introduction to maze puzzles on Miro",
     tags: [
@@ -343,6 +357,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKXpy5ok=",
     title: "The Achievable Mountain",
     url: "https://miro.pxf.io/Mm9X7Y",
+    fullUrl: "https://miro.com/templates/achievable-mountain-template/",
     description:
       "Visualize your goals in three categories — safe and achievable, ambitious but achievable, and ambitious and far-fetched — to help you pinpoint where to direct your focus.",
     tags: [
@@ -376,6 +391,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVKZRh5Ks=",
     title: "International Museum Day",
     url: "https://miro.pxf.io/m57gYy",
+    fullUrl: "https://miro.com/templates/international-museum-day-template/",
     description:
       "This International Museum Day, run a fun icebreaker activity in this virtual museum! Enter the museum and open the inside door, as marked, to reveal the icebreaker question.",
     tags: [
@@ -406,6 +422,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNrjt7Vo=",
     title: "Easter Egg Prompts",
     url: "https://miro.pxf.io/GmvVA9",
+    fullUrl: "https://miro.com/templates/easter-egg-prompts-template/",
     description:
       "Easter eggs are falling Answer the prompts behind the eggs Before the Easter Bunny gets it all in the basket.",
     tags: [
@@ -435,6 +452,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNni08_U=",
     title: "Earth Day: Where Do I Go?",
     url: "https://miro.pxf.io/xk750R",
+    fullUrl: "https://miro.com/templates/earth-day-where-do-i-go-template/",
     description:
       "Let's come together to make a positive impact by playing Where Do I Go? In this engaging game, participants collaborate to segregate online images of various types of rubbish into colorful virtual bins.",
     tags: [
@@ -470,6 +488,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNr8oVgE=",
     title: "Eco-Friendly Meter",
     url: "https://miro.pxf.io/jrvyM6",
+    fullUrl: "https://miro.com/templates/ecofriendly-meter-template/",
     description:
       "In this Earth Day-based activity, let's find out how eco-friendly of a team you are. 🌍",
     tags: [
@@ -501,6 +520,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNplaIYs=",
     title: "Color Me Green and Blue",
     url: "https://miro.pxf.io/k0mM73",
+    fullUrl: "https://miro.com/templates/color-me-template/",
     description:
       "This Earth Day, let's celebrate the beauty of our planet by collectively adding a burst of color to it! Imagine covering the Earth with vibrant green and blue sticky notes, each carrying a positive and uplifting message for the future.",
     tags: [
@@ -541,6 +561,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNrsfXbQ=",
     title: "Know Your Trees",
     url: "https://miro.pxf.io/eK6EOQ",
+    fullUrl: "https://miro.com/miroverse/know-your-trees-template/",
     description:
       "There are about 73,300 species of trees on Earth — and each plays an important role in helping humanity thrive. Let's play a game to get to know our trees more.",
     tags: [
@@ -573,6 +594,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVN-Ly_bs=",
     title: "Riddle Me This",
     url: "https://miro.pxf.io/LXQ4ao",
+    fullUrl: "https://miro.com/templates/riddle-me-this-template/",
     description:
       "This Miro board comes with a bunch of riddles to keep your mind busy. As a facilitator, you can use this board as an icebreaker activity with any type of meeting or even just as a standalone activity.",
     tags: [
@@ -676,6 +698,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVPNKBYEU=",
     title: "A Halloween Retro",
     url: "https://miro.pxf.io/DK2Vvq",
+    fullUrl: "https://miro.com/templates/halloween-retro/",
     description:
       "October is Halloween month and if you're hosting a retrospective during this time, how can you even resist a Halloween-themed retro board?",
     tags: [
@@ -842,6 +865,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVO4yVWAI=",
     title: "Space Bingo",
     url: "https://miro.pxf.io/an02Ro",
+    fullUrl: "https://miro.com/templates/space-bingo/",
     description:
       "Enjoy a game of Space Bingo as an icebreaker for your next workshop. ",
     tags: [
@@ -870,6 +894,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVPaTpglg=",
     title: "Gather Town Retrospective",
     url: "https://miro.pxf.io/DK2n0a",
+    fullUrl: "https://miro.com/templates/gather-town-retrospective/",
     description:
       "Gather Town tries to make virtual interactions more human by providing a digital space where user avatars can walk around and seamlessly interact with other humans.",
     tags: [
@@ -1109,6 +1134,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNaHmZgY=",
     title: "A Halloween Quiz",
     url: "https://miro.pxf.io/ZQZBbg",
+    fullUrl: "https://miro.com/miroverse/a-halloween-quiz-template/",
     description:
       "This fun board has about 66 questions and each question has 4 options one of which is the correct answer. To reveal the correct answer, just pull up the answer card that's sitting behind it.",
     tags: [
@@ -1142,6 +1168,7 @@ export const MIRO_TEMPLATES = [
     id: "uXjVNcti5_Q=",
     title: "What's your spooky name?",
     url: "https://miro.pxf.io/1rmRex",
+    fullUrl: "https://miro.com/templates/your-spooky-name-template/",
     description:
       "In this halloween themed icebreaker, get your participants to create their own spooky name.",
     tags: [
