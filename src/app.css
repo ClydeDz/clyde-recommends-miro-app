@@ -44,6 +44,10 @@ body {
   padding-top: 9px;
 }
 
+.scrollbar-container {
+  padding-right: 25px;
+}
+
 /* --------------- Basic chat elements --------------- */
 
 .cs-message.cs-message--outgoing,

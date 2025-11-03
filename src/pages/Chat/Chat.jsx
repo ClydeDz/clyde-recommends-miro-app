@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MainContainer,
   ChatContainer,
@@ -7,10 +7,7 @@ import {
   MessageInput,
 } from "@chatscope/chat-ui-kit-react";
 import { CHAT_TYPE } from "../../const/messages";
-import {
-  processBotReplies,
-  processUserMessage,
-} from "../../engine/messageProcessor";
+import { processBotReplies } from "../../engine/messageProcessor";
 import { Text } from "../../messageTypes/Text/Text";
 import { Recommendation } from "../../messageTypes/Recommendation/Recommendation";
 import { BOT_NAME, FEEDBACK_FORM_URL, ISSUE_URL } from "../../const/app";
@@ -18,7 +15,10 @@ import { Actions } from "../../messageTypes/Actions/Actions";
 import { Spacer } from "../../messageTypes/Spacer/Spacer";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerms } from "../../redux/searchSlice";
-import { processRepliesWithDelay } from "../../engine/replyProcessor";
+import {
+  constructUserReply,
+  processRepliesWithDelay,
+} from "../../engine/replyProcessor";
 import { setFeedbackGiven, setIsBotLoading } from "../../redux/appSlice";
 import {
   sendExternalLinkClickedEvent,
@@ -29,11 +29,14 @@ import {
 export const Chat = (props) => {
   const { conversations, setConversations, activateTimer } = props;
   const dispatch = useDispatch();
-  const { isBotLoading, feedbackGiven } = useSelector((state) => state.app);
+  const { isBotLoading, feedbackGiven, isThirdPartyOffline } = useSelector(
+    (state) => state.app
+  );
   const recommendedTemplate = useSelector(
     (state) => state.recommendation.recommendedTemplate
   );
   const { searchKeywords, searchTerms } = useSelector((state) => state.search);
+  const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
@@ -43,13 +46,16 @@ export const Chat = (props) => {
     dispatch(setIsBotLoading(true));
     dispatch(setSearchTerms(userMessage));
     dispatch(setFeedbackGiven(false));
+    setChatInput("");
 
     setConversations((oldArray) => [
       ...oldArray,
-      { ...processUserMessage(userMessage) },
+      { ...constructUserReply(userMessage) },
     ]);
 
-    const botReplies = processBotReplies(userMessage, dispatch);
+    const botReplies = await processBotReplies(userMessage, dispatch, {
+      isThirdPartyOffline,
+    });
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -86,7 +92,9 @@ export const Chat = (props) => {
 
     if (feedbackGiven) return;
 
-    const botReplies = processBotReplies(reactionClicked, dispatch);
+    const botReplies = await processBotReplies(reactionClicked, dispatch, {
+      isThirdPartyOffline,
+    });
     await processRepliesWithDelay(botReplies, setConversations, dispatch);
 
     botReplies && botReplies.length > 0 && activateTimer();
@@ -164,6 +172,20 @@ export const Chat = (props) => {
                 autoFocus={true}
                 tabIndex={0}
                 activateAfterChange={true}
+                value={chatInput}
+                onChange={setChatInput}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const sanitisedText = e.clipboardData
+                    .getData("text/plain")
+                    .replace(/<[^>]*>/g, "")
+                    .replace(/&nbsp;/g, " ")
+                    .replace(/\s+/g, " ")
+                    .replace(/&[^;]+;/g, "")
+                    .trim();
+
+                  setChatInput(sanitisedText);
+                }}
               />
             </ChatContainer>
           </MainContainer>

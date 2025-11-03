@@ -1,4 +1,4 @@
-import { MIRO_TEMPLATES } from "../const/templates";
+import { MIRO_TEMPLATES } from "../../const/templates";
 
 export const recommendTemplates = (keywords) => {
   const keywordExistsInTag = (tag, keyword) =>
@@ -18,4 +18,8 @@ export const recommendTemplates = (keywords) => {
 
 export const pickTemplate = (templates) => {
   return templates[Math.floor(Math.random() * templates.length)];
+};
+
+export const findTemplateUsingUrl = (url) => {
+  return MIRO_TEMPLATES.find((template) => template.url === url);
 };

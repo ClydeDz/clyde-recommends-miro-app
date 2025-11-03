@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Message, Avatar, Button } from "@chatscope/chat-ui-kit-react";
-import { CHAT_FROM } from "../../const/messages";
+import { CHAT_FROM, CHAT_SOURCE } from "../../const/messages";
 import { BOT_AVATAR_URL, BOT_NAME } from "../../const/app";
 import { sendTemplateVisitedEvent } from "../../api/mixpanel";
 import { useSelector } from "react-redux";
@@ -17,6 +17,7 @@ export const Recommendation = (props) => {
       ["Template url"]: message.template.url,
       ["Search terms"]: searchTerms,
       ["Search keywords"]: searchKeywords,
+      ["Source"]: message.template.source,
     });
     window.open(message.template.url, "_blank");
   };
