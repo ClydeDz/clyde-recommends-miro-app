@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MainContainer,
   ChatContainer,
@@ -36,6 +36,7 @@ export const Chat = (props) => {
     (state) => state.recommendation.recommendedTemplate
   );
   const { searchKeywords, searchTerms } = useSelector((state) => state.search);
+  const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
@@ -45,6 +46,7 @@ export const Chat = (props) => {
     dispatch(setIsBotLoading(true));
     dispatch(setSearchTerms(userMessage));
     dispatch(setFeedbackGiven(false));
+    setChatInput("");
 
     setConversations((oldArray) => [
       ...oldArray,
@@ -170,6 +172,20 @@ export const Chat = (props) => {
                 autoFocus={true}
                 tabIndex={0}
                 activateAfterChange={true}
+                value={chatInput}
+                onChange={setChatInput}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const sanitisedText = e.clipboardData
+                    .getData("text/plain")
+                    .replace(/<[^>]*>/g, "")
+                    .replace(/&nbsp;/g, " ")
+                    .replace(/\s+/g, " ")
+                    .replace(/&[^;]+;/g, "")
+                    .trim();
+
+                  setChatInput(sanitisedText);
+                }}
               />
             </ChatContainer>
           </MainContainer>
