@@ -103,6 +103,10 @@ body {
   background-color: var(--miro-grey);
 }
 
+.cs-message-input__content-editor-container {
+  background-color: transparent;
+}
+
 .cs-button--send {
   color: var(--primary-color);
 }
